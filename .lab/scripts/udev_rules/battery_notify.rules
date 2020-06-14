@@ -1,0 +1,17 @@
+# AC Unplugged
+ACTION=="change", SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", RUN+="/usr/bin/su sandarulj -c 'battery-notify-handler ac unplugged'"
+
+# AC Plugged
+ACTION=="change", SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="/usr/bin/su sandarulj -c 'battery-notify-handler ac plugged'"
+
+# Battery Low at 20%
+ACTION=="change", SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_CAPACITY}=="20", RUN+="/usr/bin/su sandarulj -c 'battery-notify-handler battery low'"
+
+# Battery Low at 40%
+ACTION=="change", SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_CAPACITY}=="40", RUN+="/usr/bin/su sandarulj -c 'battery-notify-handler battery low'"
+
+# Battery Charged at 60%
+ACTION=="change", SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_CAPACITY}=="60", RUN+="/usr/bin/su sandarulj -c 'battery-notify-handler battery charged'"
+
+# Battery Charged at 80%
+ACTION=="change", SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_CAPACITY}=="80", RUN+="/usr/bin/su sandarulj -c 'battery-notify-handler battery charged'"
