@@ -1,0 +1,2 @@
+lib32-gnutls
+lib32-libpulse || lib32-alsa-lib
