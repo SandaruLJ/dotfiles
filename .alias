@@ -11,7 +11,7 @@ alias myip='curl icanhazip.com'
 alias primerun='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia '
 alias bash-config='vim ~/.bashrc'
 alias zsh-config='vim ~/.zshrc'
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.lab/git/SandaruLJ/dotfiles --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/Git/SandaruLJ/dotfiles --work-tree=$HOME'
 
 ## Temp
 #alias nvidia-status='cat /proc/acpi/bbswitch | cut -d" " -f2'
