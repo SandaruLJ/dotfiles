@@ -8,11 +8,7 @@ alias memmon='watch -n 1 free -h'
 alias swapflush='sudo swapoff -av && sudo swapon -av'
 alias pagecacheflush='echo 1 | sudo tee /proc/sys/vm/drop_caches >/dev/null; echo "Page cache dropped"'
 alias myip='curl icanhazip.com'
-alias primerun='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia '
+#alias primerun='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia '
 alias bash-config='vim ~/.bashrc'
-alias zsh-config='vim ~/.zshrc'
+#alias zsh-config='vim ~/.zshrc'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/Git/SandaruLJ/dotfiles --work-tree=$HOME'
-
-## Temp
-#alias nvidia-status='cat /proc/acpi/bbswitch | cut -d" " -f2'
-#alias restart-de='echo "Restarting Plasma..."; kquitapp5 plasmashell && kstart5 plasmashell >/dev/null 2>/dev/null'
