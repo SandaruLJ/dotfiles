@@ -10,6 +10,7 @@
   <memory unit="KiB">2097152</memory>
   <currentMemory unit="KiB">2097152</currentMemory>
   <vcpu placement="static">4</vcpu>
+  <iothreads>1</iothreads>
   <os>
     <type arch="x86_64" machine="pc-q35-5.2">hvm</type>
   </os>
@@ -47,7 +48,7 @@
   <devices>
     <emulator>/usr/bin/qemu-system-x86_64</emulator>
     <disk type="file" device="disk">
-      <driver name="qemu" type="qcow2"/>
+      <driver name="qemu" type="qcow2" cache="none" io="native"/>
       <source file="/run/media/sandarulj/Programmes/VMs/virt-manager/storage-pool/win10.qcow2"/>
       <target dev="sda" bus="scsi"/>
       <boot order="2"/>
@@ -108,6 +109,7 @@
       <address type="pci" domain="0x0000" bus="0x03" slot="0x00" function="0x0"/>
     </controller>
     <controller type="scsi" index="0" model="virtio-scsi">
+      <driver queues="4" iothread="1"/>
       <address type="pci" domain="0x0000" bus="0x09" slot="0x00" function="0x0"/>
     </controller>
     <interface type="network">
