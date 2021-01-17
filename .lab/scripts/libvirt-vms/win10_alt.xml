@@ -11,14 +11,14 @@
   <currentMemory unit="KiB">2097152</currentMemory>
   <vcpu placement="static">4</vcpu>
   <iothreads>1</iothreads>
-+ <cputune>
-+   <vcpupin vcpu="0" cpuset="2"/>
-+   <vcpupin vcpu="1" cpuset="6"/>
-+   <vcpupin vcpu="2" cpuset="3"/>
-+   <vcpupin vcpu="3" cpuset="7"/>
-+   <emulatorpin cpuset="0,4"/>
-+   <iothreadpin iothread="1" cpuset="1,5"/>
-+ </cputune>
+  <cputune>
+    <vcpupin vcpu="0" cpuset="2"/>
+    <vcpupin vcpu="1" cpuset="6"/>
+    <vcpupin vcpu="2" cpuset="3"/>
+    <vcpupin vcpu="3" cpuset="7"/>
+    <emulatorpin cpuset="0,4"/>
+    <iothreadpin iothread="1" cpuset="1,5"/>
+  </cputune>
   <os>
     <type arch="x86_64" machine="pc-q35-5.2">hvm</type>
   </os>
