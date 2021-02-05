@@ -3,3 +3,6 @@
 	email = sandarulakshitha1999@gmail.com
 [core]
 	autocrlf = input
+	editor = vim
+[init]
+	defaultBranch = main
