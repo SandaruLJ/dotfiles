@@ -1,4 +1,4 @@
-<domain type='kvm'>
+<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
   <name>win10</name>
   <uuid>06ceff1b-c291-452a-be93-8f9b1e1ccf2a</uuid>
   <title>Windows 10</title>
@@ -42,7 +42,9 @@
     <feature policy='disable' name='hypervisor'/>
   </cpu>
   <clock offset='localtime'>
-    <timer name='hpet' present='yes'/>
+    <timer name='rtc' tickpolicy='catchup'/>
+    <timer name='pit' tickpolicy='delay'/>
+    <timer name='hpet' present='no'/>
     <timer name='hypervclock' present='yes'/>
   </clock>
   <on_poweroff>destroy</on_poweroff>
@@ -133,10 +135,6 @@
     <console type='pty'>
       <target type='serial' port='0'/>
     </console>
-    <channel type='spicevmc'>
-      <target type='virtio' name='com.redhat.spice.0'/>
-      <address type='virtio-serial' controller='0' bus='0' port='1'/>
-    </channel>
     <input type='tablet' bus='usb'>
       <address type='usb' bus='0' port='1'/>
     </input>
@@ -144,14 +142,20 @@
     <input type='keyboard' bus='ps2'/>
     <graphics type='spice'>
       <listen type='none'/>
+      <gl enable='yes' rendernode='/dev/dri/by-path/pci-0000:00:02.0-render'/>
     </graphics>
     <sound model='ich9'>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x1b' function='0x0'/>
     </sound>
     <video>
-      <model type='qxl' ram='65536' vram='65536' vgamem='16384' heads='1' primary='yes'/>
-      <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x0'/>
+      <model type='none'/>
     </video>
+    <hostdev mode='subsystem' type='mdev' managed='no' model='vfio-pci' display='on'>
+      <source>
+        <address uuid='7fbb23ae-f824-4065-9cda-4bf1a55a8995'/>
+      </source>
+      <address type='pci' domain='0x0000' bus='0x08' slot='0x00' function='0x0'/>
+    </hostdev>
     <redirdev bus='usb' type='spicevmc'>
       <address type='usb' bus='0' port='2'/>
     </redirdev>
@@ -162,5 +166,18 @@
       <address type='pci' domain='0x0000' bus='0x04' slot='0x00' function='0x0'/>
     </memballoon>
   </devices>
+  <qemu:commandline>
+    <qemu:arg value='-set'/>
+    <qemu:arg value='device.hostdev0.x-igd-opregion=on'/>
+    <qemu:arg value='-set'/>
+    <qemu:arg value='device.hostdev0.xres=1366'/>
+    <qemu:arg value='-set'/>
+    <qemu:arg value='device.hostdev0.yres=768'/>
+    <qemu:arg value='-set'/>
+    <qemu:arg value='device.hostdev0.ramfb=on'/>
+    <qemu:arg value='-set'/>
+    <qemu:arg value='device.hostdev0.driver=vfio-pci-nohotplug'/>
+    <qemu:env name='MESA_LOADER_DRIVER_OVERRIDE' value='i965'/>
+  </qemu:commandline>
 </domain>
 

@@ -1,10 +1,10 @@
 <domain type='kvm'>
-  <name>win10</name>
-  <uuid>06ceff1b-c291-452a-be93-8f9b1e1ccf2a</uuid>
-  <title>Windows 10</title>
+  <name>archlinux</name>
+  <uuid>f12469f4-0a20-43de-87ed-38def9928899</uuid>
+  <title>Arch Linux</title>
   <metadata>
     <libosinfo:libosinfo xmlns:libosinfo="http://libosinfo.org/xmlns/libvirt/domain/1.0">
-      <libosinfo:os id="http://microsoft.com/win/10"/>
+      <libosinfo:os id="http://archlinux.org/archlinux/rolling"/>
     </libosinfo:libosinfo>
   </metadata>
   <memory unit='KiB'>3145728</memory>
@@ -20,45 +20,42 @@
     <iothreadpin iothread='1' cpuset='1,5'/>
   </cputune>
   <os>
-    <type arch='x86_64' machine='pc-q35-5.2'>hvm</type>
+    <type arch='x86_64' machine='pc-q35-6.0'>hvm</type>
   </os>
   <features>
     <acpi/>
     <apic/>
-    <hyperv>
-      <relaxed state='on'/>
-      <vapic state='on'/>
-      <spinlocks state='on' retries='8191'/>
-      <vendor_id state='on' value='1234567890ab'/>
-    </hyperv>
-    <kvm>
-      <hidden state='on'/>
-    </kvm>
     <vmport state='off'/>
-    <ioapic driver='kvm'/>
   </features>
   <cpu mode='host-passthrough' check='none' migratable='on'>
     <topology sockets='1' dies='1' cores='2' threads='2'/>
-    <feature policy='disable' name='hypervisor'/>
   </cpu>
-  <clock offset='localtime'>
-    <timer name='hpet' present='yes'/>
-    <timer name='hypervclock' present='yes'/>
+  <clock offset='utc'>
+    <timer name='rtc' tickpolicy='catchup'/>
+    <timer name='pit' tickpolicy='delay'/>
+    <timer name='hpet' present='no'/>
   </clock>
   <on_poweroff>destroy</on_poweroff>
   <on_reboot>restart</on_reboot>
   <on_crash>destroy</on_crash>
   <pm>
-    <suspend-to-mem enabled='no'/>
-    <suspend-to-disk enabled='no'/>
+    <suspend-to-mem enabled='yes'/>
+    <suspend-to-disk enabled='yes'/>
   </pm>
   <devices>
     <emulator>/usr/bin/qemu-system-x86_64</emulator>
     <disk type='file' device='disk'>
-      <driver name='qemu' type='qcow2' cache='none' io='native'/>
-      <source file='/run/media/sandarulj/Programmes/VMs/virt-manager/storage-pool/win10.qcow2'/>
-      <target dev='sda' bus='scsi'/>
+      <driver name='qemu' type='qcow2' cache='none' io='native' iothread='1' queues='4'/>
+      <source file='/run/media/sandarulj/Programmes/VMs/virt-manager/storage-pool/archlinux.qcow2'/>
+      <target dev='vda' bus='virtio'/>
       <boot order='2'/>
+      <address type='pci' domain='0x0000' bus='0x04' slot='0x00' function='0x0'/>
+    </disk>
+    <disk type='file' device='cdrom'>
+      <driver name='qemu' type='raw'/>
+      <target dev='sda' bus='sata'/>
+      <readonly/>
+      <boot order='1'/>
       <address type='drive' controller='0' bus='0' target='0' unit='0'/>
     </disk>
     <controller type='usb' index='0' model='qemu-xhci' ports='15'>
@@ -98,29 +95,46 @@
       <target chassis='6' port='0x15'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x5'/>
     </controller>
-    <controller type='pci' index='7' model='pcie-to-pci-bridge'>
-      <model name='pcie-pci-bridge'/>
-      <address type='pci' domain='0x0000' bus='0x05' slot='0x00' function='0x0'/>
+    <controller type='pci' index='7' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='7' port='0x16'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x6'/>
     </controller>
     <controller type='pci' index='8' model='pcie-root-port'>
       <model name='pcie-root-port'/>
-      <target chassis='8' port='0x16'/>
-      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x6'/>
+      <target chassis='8' port='0x8'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x0' multifunction='on'/>
     </controller>
     <controller type='pci' index='9' model='pcie-root-port'>
       <model name='pcie-root-port'/>
-      <target chassis='9' port='0x17'/>
-      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x7'/>
+      <target chassis='9' port='0x9'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x1'/>
+    </controller>
+    <controller type='pci' index='10' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='10' port='0xa'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x2'/>
+    </controller>
+    <controller type='pci' index='11' model='pcie-to-pci-bridge'>
+      <model name='pcie-pci-bridge'/>
+      <address type='pci' domain='0x0000' bus='0x07' slot='0x00' function='0x0'/>
     </controller>
     <controller type='virtio-serial' index='0'>
       <address type='pci' domain='0x0000' bus='0x03' slot='0x00' function='0x0'/>
     </controller>
-    <controller type='scsi' index='0' model='virtio-scsi'>
-      <driver queues='4' iothread='1'/>
+    <filesystem type='mount' accessmode='mapped'>
+      <source dir='/run/media/sandarulj/Multimedia/Audio/Music'/>
+      <target dir='/dev/music'/>
+      <readonly/>
       <address type='pci' domain='0x0000' bus='0x09' slot='0x00' function='0x0'/>
-    </controller>
+    </filesystem>
+    <filesystem type='mount' accessmode='mapped'>
+      <source dir='/home/sandarulj/Code/lollypop'/>
+      <target dir='/dev/lollypop'/>
+      <address type='pci' domain='0x0000' bus='0x08' slot='0x00' function='0x0'/>
+    </filesystem>
     <interface type='network'>
-      <mac address='52:54:00:0d:a9:9e'/>
+      <mac address='52:54:00:05:e1:88'/>
       <source network='default'/>
       <model type='virtio'/>
       <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
@@ -133,9 +147,13 @@
     <console type='pty'>
       <target type='serial' port='0'/>
     </console>
+    <channel type='unix'>
+      <target type='virtio' name='org.qemu.guest_agent.0'/>
+      <address type='virtio-serial' controller='0' bus='0' port='1'/>
+    </channel>
     <channel type='spicevmc'>
       <target type='virtio' name='com.redhat.spice.0'/>
-      <address type='virtio-serial' controller='0' bus='0' port='1'/>
+      <address type='virtio-serial' controller='0' bus='0' port='2'/>
     </channel>
     <input type='tablet' bus='usb'>
       <address type='usb' bus='0' port='1'/>
@@ -150,7 +168,7 @@
     </sound>
     <video>
       <model type='qxl' ram='65536' vram='65536' vgamem='16384' heads='1' primary='yes'/>
-      <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x0'/>
+      <address type='pci' domain='0x0000' bus='0x0b' slot='0x01' function='0x0'/>
     </video>
     <redirdev bus='usb' type='spicevmc'>
       <address type='usb' bus='0' port='2'/>
@@ -159,8 +177,12 @@
       <address type='usb' bus='0' port='3'/>
     </redirdev>
     <memballoon model='virtio'>
-      <address type='pci' domain='0x0000' bus='0x04' slot='0x00' function='0x0'/>
+      <address type='pci' domain='0x0000' bus='0x05' slot='0x00' function='0x0'/>
     </memballoon>
+    <rng model='virtio'>
+      <backend model='random'>/dev/urandom</backend>
+      <address type='pci' domain='0x0000' bus='0x06' slot='0x00' function='0x0'/>
+    </rng>
   </devices>
 </domain>
 
