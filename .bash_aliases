@@ -35,3 +35,9 @@ alias windows-restore='virsh restore /var/tmp/kvm-saves/win10 && virt-viewer -af
 alias dotfiles='git --git-dir=$HOME/.lab/git/dotfiles --work-tree=$HOME'
 alias myip='curl icanhazip.com'
 #alias primerun='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia '
+
+# Load machine specific aliases
+if [[ -s ".bash_aliases_tmp" ]]; then
+    source .bash_aliases_tmp
+fi
+
