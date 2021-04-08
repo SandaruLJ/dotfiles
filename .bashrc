@@ -12,5 +12,10 @@ if [[ -s ".bash_aliases" ]]; then
     source .bash_aliases
 fi
 
+# Source temporary aliases from .bash_aliases_tmp file
+if [[ -s ".bash_aliases_tmp" ]]; then
+    source .bash_aliases_tmp
+fi
+
 # Erase duplicates from history
 HISTCONTROL=erasedups
