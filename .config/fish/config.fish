@@ -10,4 +10,7 @@ if test -f .bash_aliases_tmp
     source .bash_aliases_tmp
 end
 
-starship init fish | source
+# Enable Starship prompt if in GUI
+if test $DISPLAY
+    starship init fish | source
+end
