@@ -1,0 +1,5 @@
+[Asus ROG Zephyrus G14 2020 Keyboard]
+MatchVendor=0x0B05
+MatchProduct=0x1866
+MatchUdevType=keyboard
+AttrKeyboardIntegration=internal
