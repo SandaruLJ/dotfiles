@@ -1,6 +1,7 @@
-### Overrides
+### Overrides (incl. enabling coloured output)
 alias ls='ls --color=auto --group-directories-first'
 alias grep='grep --color=auto'
+alias ip='ip --color=auto'
 alias rm='trash'
 alias cat='bat'
 
