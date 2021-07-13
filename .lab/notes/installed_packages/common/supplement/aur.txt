@@ -1,0 +1,13 @@
+chrome-gnome-shell-git
+bitwarden
+
+sublime-text-4
+
+pipewire-jack-dropin
+
+onlyoffice-bin
+teams
+zoom
+anydesk-bin
+
+xdman
