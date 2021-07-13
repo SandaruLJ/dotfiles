@@ -11,3 +11,5 @@ zoom
 anydesk-bin
 
 xdman
+
+protonvpn
