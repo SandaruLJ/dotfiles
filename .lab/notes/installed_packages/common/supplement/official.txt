@@ -10,7 +10,10 @@ kodi
 foliate
 gimp
 code
+
 obs-studio
+qt5-wayland
+xdg-desktop-portal
 
 fish
 starship
