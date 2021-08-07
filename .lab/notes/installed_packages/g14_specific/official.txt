@@ -1,1 +1,4 @@
 libva-mesa-driver
+nvidia
+
+smartmontools

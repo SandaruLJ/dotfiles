@@ -28,8 +28,11 @@ pipewire-jack
 
 powertop
 
+zram-generator
+
 xorg-xauth
 
+virt-manager
 virt-viewer
 iptables-nft
 dnsmasq
