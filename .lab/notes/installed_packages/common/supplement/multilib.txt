@@ -1,5 +1,0 @@
-lib32-vkd3d
-
-wine-staging
-
-steam
