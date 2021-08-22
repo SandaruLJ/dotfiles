@@ -15,3 +15,5 @@ olive
 xdman
 
 protonvpn
+
+quick-lookup

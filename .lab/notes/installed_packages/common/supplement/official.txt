@@ -38,3 +38,9 @@ iptables-nft
 dnsmasq
 
 android-tools
+
+docker
+
+vkd3d
+
+lutris

@@ -1,4 +1,5 @@
 libva-mesa-driver
+amdvlk
 nvidia
 
 smartmontools
