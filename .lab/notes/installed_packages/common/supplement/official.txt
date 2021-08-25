@@ -45,5 +45,6 @@ vkd3d
 lib32-vkd3d
 
 wine-staging
+winetricks
 lutris
 steam
