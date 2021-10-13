@@ -1,5 +1,6 @@
 gnome
 gnome-tweaks
+gnome-software-packagekit-plugin
 geary
 libappindicator-gtk3
 
