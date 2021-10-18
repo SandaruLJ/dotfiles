@@ -42,12 +42,12 @@ android-tools
 
 docker
 
-vkd3d
-lib32-vkd3d
-
+steam
+lutris
 wine-staging
 winetricks
-lutris
-steam
+lib32-libpulse
+vkd3d
+lib32-vkd3d
 
 power-profiles-daemon
