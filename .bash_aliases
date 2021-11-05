@@ -6,7 +6,7 @@ alias rm='trash'
 alias cat='bat'
 
 ### Helpful Queries
-alias gpuinfo='lspci -k | grep -EA1 "VGA|3D|Display"'
+alias gpuinfo='lspci -k | grep -EA3 "VGA|3D|Display"'
 alias myip='curl icanhazip.com'
 
 ## Memory Management
