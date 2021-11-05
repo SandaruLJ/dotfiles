@@ -12,6 +12,8 @@ foliate
 gimp
 code
 
+bitwarden
+
 obs-studio
 qt5-wayland
 xdg-desktop-portal
