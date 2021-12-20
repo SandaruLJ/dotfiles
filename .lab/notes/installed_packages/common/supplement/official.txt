@@ -53,3 +53,5 @@ vkd3d
 lib32-vkd3d
 
 power-profiles-daemon
+
+helvum
