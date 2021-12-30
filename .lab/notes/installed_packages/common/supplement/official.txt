@@ -12,11 +12,18 @@ foliate
 gimp
 code
 
+pipewire-pulse
+pipewire-jack
+
+helvum
+
 bitwarden
 
 obs-studio
 qt5-wayland
 xdg-desktop-portal
+
+gnome-connections
 
 fish
 starship
@@ -25,9 +32,6 @@ otf-fira-sans
 otf-fira-mono
 ttf-fira-code
 ttf-nerd-fonts-symbols
-
-pipewire-pulse
-pipewire-jack
 
 powertop
 
@@ -53,5 +57,3 @@ vkd3d
 lib32-vkd3d
 
 power-profiles-daemon
-
-helvum
