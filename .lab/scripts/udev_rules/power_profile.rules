@@ -1,0 +1,5 @@
+# On AC Unplugged
+ACTION=="change", SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", RUN+="/usr/bin/powerprofilesctl set power-saver"
+
+# On AC Plugged
+ACTION=="change", SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="/usr/bin/powerprofilesctl set balanced"
