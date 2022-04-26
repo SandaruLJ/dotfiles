@@ -59,3 +59,5 @@ lib32-vkd3d
 power-profiles-daemon
 
 openssh-askpass
+
+evolution-ews
