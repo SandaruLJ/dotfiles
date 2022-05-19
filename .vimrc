@@ -8,3 +8,7 @@ source $VIMRUNTIME/vimrc_example.vim
 set expandtab
 set shiftwidth=4
 set softtabstop=4
+
+" Set backup and swap directories
+set backupdir=~/.vim/backup//,.
+set directory=~/.vim/backup//,.
