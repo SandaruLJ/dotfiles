@@ -125,11 +125,25 @@ source $ZSH/oh-my-zsh.sh
 setopt histignorealldups
 
 # Source aliases
-if [[ -f ".alias" ]]; then
-  source .alias
+if [[ -f ".bash_aliases" ]]; then
+  source .bash_aliases
+fi
+
+# Source temporary aliases
+if [[ -f ".bash_aliases_tmp" ]]; then
+    source .bash_aliases_tmp
 fi
 
 # Starship prompt
-if [[ -f $(which starship) ]]; then
-    eval "$(starship init zsh)"
-fi
+#if [[ -f $(which starship) ]]; then
+#    eval "$(starship init zsh)"
+#fi
+
+# Enable coloured output for man-pages
+export LESS_TERMCAP_mb=$(printf '\033[01;31m')     # begin blink
+export LESS_TERMCAP_md=$(printf '\033[01;36m')     # begin bold
+export LESS_TERMCAP_me=$(printf '\033[0m')         # reset bold/blink
+export LESS_TERMCAP_so=$(printf '\033[01;33m')     # begin reverse video
+export LESS_TERMCAP_se=$(printf '\033[0m')         # reset reverse video
+export LESS_TERMCAP_us=$(printf '\033[1;32m')      # begin underline
+export LESS_TERMCAP_ue=$(printf '\033[0m')         # reset underline
