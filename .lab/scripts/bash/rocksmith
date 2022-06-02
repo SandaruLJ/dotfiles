@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Set required environment variables for 'proton run'
+export STEAM_COMPAT_CLIENT_INSTALL_PATH="$HOME/.steam/steam"
+export STEAM_APPS_PATH="$STEAM_COMPAT_CLIENT_INSTALL_PATH/steamapps"
+export STEAM_COMPAT_DATA_PATH="$STEAM_APPS_PATH/compatdata/221680"
+
+# If Steam was started with this script, it will be shutdown at the end
+STEAM_WAS_RUNNING=
+
+# Check if Steam is running and start it if it is not
+if [[ -z $(pgrep steam) ]]; then
+    # Generate log filename
+    LOG_FILE="/tmp/steam_out_$(date +%s)"
+    
+    # Start Steam and redirect output to the log file
+    steam -silent &> "$LOG_FILE" & disown
+
+    # Inspect log file for startup message to verify Steam has started
+    STARTUP_MESSAGE="System startup time:"
+    tail -f "$LOG_FILE" | sed /"$STARTUP_MESSAGE"/q
+    # The script will continue after Steam has been started
+else
+    STEAM_WAS_RUNNING=1
+fi
+
+# Set proton version
+PROTON_VERSION="Proton 5.13"
+
+# Set proton executable
+PROTON="$STEAM_APPS_PATH/common/$PROTON_VERSION/proton"
+
+# Set game path and the executable
+GAME_PATH="/run/media/sandarulj/SHARED/Programs/Games/Steam/steamapps/common/Rocksmith2014"
+GAME_EXEC="Rocksmith2014.exe"
+
+# Change directory to game path (necessary for detecting 'Rocksmith.ini' and the DLCs)
+cd "$GAME_PATH"
+
+# Start game
+"$PROTON" run "$GAME_PATH/$GAME_EXEC" 
+
+# Clean up
+if [[ ! $STEAM_WAS_RUNNING ]]; then
+    steam -shutdown
+    rm "$LOG_FILE"
+fi
