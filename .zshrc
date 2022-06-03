@@ -27,6 +27,11 @@ export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
+# If running in a TTY, change to a TTY-friendly theme
+if [[ ! $DISPLAY ]]; then
+    ZSH_THEME="gentoo"
+fi
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -147,3 +152,4 @@ export LESS_TERMCAP_so=$(printf '\033[01;33m')     # begin reverse video
 export LESS_TERMCAP_se=$(printf '\033[0m')         # reset reverse video
 export LESS_TERMCAP_us=$(printf '\033[1;32m')      # begin underline
 export LESS_TERMCAP_ue=$(printf '\033[0m')         # reset underline
+
