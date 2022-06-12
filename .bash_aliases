@@ -5,6 +5,11 @@ alias ip='ip --color=auto'
 alias rm='trash'
 alias cat='bat'
 
+# Override 'bat' with 'batcat' on Debian-based systems
+if test -f "/etc/debian_version"; then
+    alias cat='batcat'
+fi
+
 ### Helpful Queries
 alias gpuinfo='lspci -k | grep -EA3 "VGA|3D|Display"'
 alias myip='curl icanhazip.com'
