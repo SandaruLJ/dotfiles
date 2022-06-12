@@ -28,7 +28,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 # If running in a TTY, change to a TTY-friendly theme
-if [[ ! $DISPLAY ]]; then
+if [[ `tput colors` != "256" ]]; then
     ZSH_THEME="gentoo"
 fi
 
