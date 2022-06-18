@@ -5,6 +5,9 @@ SAVEHIST=1000
 setopt autocd beep nomatch
 # End of lines configured by zsh-newuser-install
 
+# Append vendor auto-completions to FPATH
+FPATH=$FPATH:/usr/share/zsh/vendor-completions
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/sandarulj/.zshrc'
 
