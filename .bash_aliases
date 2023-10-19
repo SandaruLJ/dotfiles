@@ -23,7 +23,7 @@ alias pagecacheflush='echo 1 | sudo tee /proc/sys/vm/drop_caches >/dev/null; ech
 alias bash-config='vim ~/.bashrc'
 alias fish-config='vim ~/.config/fish/config.fish'
 alias refind-config='sudo vim /boot/efi/EFI/refind/manual.conf'
-#alias zsh-config='vim ~/.zshrc'
+alias zsh-config='vim ~/.zshrc'
 
 ## VM Management
 # Arch Linux
