@@ -11,4 +11,5 @@ set softtabstop=4
 
 " Set backup and swap directories
 set backupdir=~/.vim/backup//,.
-set directory=~/.vim/backup//,.
+set directory=~/.vim/swap//,.
+set undodir=~/.vim/undor//,.
