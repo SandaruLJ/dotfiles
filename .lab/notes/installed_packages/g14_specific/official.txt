@@ -1,6 +1,10 @@
+vulkan-radeon
+lib32-vulkan-radeon
+
 libva-mesa-driver
-amdvlk
-lib32-amdvlk
+lib32-libva-mesa-driver
+mesa-vdpau
+lib32-mesa-vdpau
 
 nvidia
 
