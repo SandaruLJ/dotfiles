@@ -2,6 +2,7 @@ base
 linux
 linux-firmware
 amd-ucode
+fwupd
 
 refind
 grub
