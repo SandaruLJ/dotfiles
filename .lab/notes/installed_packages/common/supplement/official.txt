@@ -24,6 +24,9 @@ xdg-desktop-portal
 
 gnome-connections
 
+noto-fonts-emoji
+noto-fonts-cjk
+
 otf-fira-sans
 otf-fira-mono
 ttf-fira-code
