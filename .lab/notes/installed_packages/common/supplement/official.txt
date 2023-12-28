@@ -10,7 +10,6 @@ mpv
 kodi
 foliate
 gimp
-code
 
 pipewire-pulse
 pipewire-jack
@@ -24,9 +23,6 @@ qt5-wayland
 xdg-desktop-portal
 
 gnome-connections
-
-fish
-starship
 
 otf-fira-sans
 otf-fira-mono
