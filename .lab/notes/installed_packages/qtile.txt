@@ -1,0 +1,9 @@
+qtile
+ttf-font-awesome
+python-iwlib
+alacritty
+rofi
+gammastep
+feh
+thunar
+
