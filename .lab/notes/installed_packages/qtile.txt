@@ -3,7 +3,7 @@ ttf-font-awesome
 python-iwlib
 alacritty
 rofi
-gammastep
+redshift
 feh
 thunar
 

@@ -7,5 +7,5 @@ else
     feh --bg-fill --randomize ~/Pictures/SHARED/Wallpapers/* &
 fi
 
-gammastep &
+redshift &
 
