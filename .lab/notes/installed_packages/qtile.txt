@@ -9,6 +9,7 @@ redshift
 rofi
 feh
 gnome-keyring
+seahorse
 
 alacritty
 thunar
