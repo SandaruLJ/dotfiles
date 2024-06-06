@@ -8,4 +8,5 @@ else
 fi
 
 redshift &
+picom -b
 
