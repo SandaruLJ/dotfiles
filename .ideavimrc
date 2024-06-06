@@ -1,0 +1,5 @@
+set hlsearch
+set incsearch
+
+set idearefactormode=keep
+
