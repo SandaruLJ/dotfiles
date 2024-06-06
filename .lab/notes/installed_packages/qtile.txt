@@ -3,7 +3,11 @@ ttf-font-awesome
 python-iwlib
 alacritty
 rofi
+picom
 redshift
 feh
+gnome-keyring
 thunar
+zathura
+zathura-pdf-mupdf
 
