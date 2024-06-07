@@ -8,6 +8,8 @@ redshift
 
 rofi
 feh
+scrot
+i3lock
 gnome-keyring
 seahorse
 
