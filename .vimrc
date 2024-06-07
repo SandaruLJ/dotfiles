@@ -2,6 +2,8 @@ source $VIMRUNTIME/vimrc_example.vim
 
 syntax on
 
+set number
+set relativenumber
 set nocompatible
 set nowrap
 set encoding=utf8
