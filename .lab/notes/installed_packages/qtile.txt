@@ -6,6 +6,7 @@ python-iwlib
 picom
 redshift
 
+brightnessctl
 rofi
 feh
 scrot
