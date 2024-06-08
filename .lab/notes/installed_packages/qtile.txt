@@ -2,6 +2,8 @@ qtile
 
 ttf-nerd-fonts-symbols-mono
 python-iwlib
+python-dbus-next
+python-pulsectl-asyncio
 
 picom
 redshift

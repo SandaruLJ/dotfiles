@@ -31,6 +31,8 @@ from libqtile import bar, hook, layout, qtile, widget
 from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+from qtile_extras import widget as extra_widget, hook as extra_hook
+
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -275,39 +277,39 @@ screens = [
                     format="{down:>6.1f}{down_suffix:>2}  {up:>6.1f}{up_suffix:>2} ",
                     background=colors["blue"],
                 ),
-                widget.Wlan(
+                extra_widget.WiFiIcon(
                     interface="wlp2s0",
-                    format=" {essid}",
-                    ethernet_message="",
-                    max_chars=14,
                     background=colors["purple"],
+                    padding_x=12,
+                    padding_y=8,
+                    wifi_arc=90,
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Volume(
+                extra_widget.PulseVolumeExtra(
                     background=colors["cyan"],
-                    get_volume_command="echo $(pamixer --get-volume)%",
-                    check_mute_command="pamixer --get-mute",
-                    check_mute_string="true",
-                    mute_command="pamixer -m",
-                    mute_format="",
-                    unmute_format=" {volume}%",
-                    volume_down_command="pamixer -d 1",
-                    volume_up_command="pamixer -i 1",
+                    mode="icon",
+                    emoji=True,
+                    emoji_list=["󰝟", "󰕿", "󰖀", "󰕾"],
+                    theme_path="~/.config/qtile/resources/icons",
+                    fmt="<u>{}</u>",
+                    padding=4,
+                    step=2,
                 ),
-                widget.Battery(
-                    format="{char} {percent:2.0%}",
-                    background=colors["yellow"],
-                    foreground=colors["black"],
-                    low_background=colors["red"],
-                    low_foreground=colors["white"],
-                    low_percentage=0.3,
-                    update_interval=1,
-                    charge_char="",
-                    discharge_char="",
-                    not_charging_char="",
-                    full_char="",
-                    empty_char="",
+                # padding workaround for above widget
+                widget.Spacer(background=colors["cyan"], length=4),
+                # widget.PulseVolume(
+                #     background=colors["cyan"],
+                #     emoji=True,
+                #     emoji_list=["󰝟", "󰕿", "󰖀", "󰕾"],
+                # ),
+                extra_widget.UPowerWidget(
+                    background=colors["bg"],
+                    battery_height=12,
+                    battery_width=24,
+                    margin=12,
+                    percentage_low=0.3,
+                    percentage_critical=0.2,
                 ),
                 widget.Clock(format="%a %d %b %H:%M", background=colors["green"]),
                 widget.CurrentLayoutIcon(scale=0.8),
