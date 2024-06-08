@@ -275,11 +275,9 @@ screens = [
                 ),
                 widget.Net(
                     format="{down:>6.1f}{down_suffix:>2}  {up:>6.1f}{up_suffix:>2} ",
-                    background=colors["blue"],
                 ),
                 extra_widget.WiFiIcon(
                     interface="wlp2s0",
-                    background=colors["purple"],
                     padding_x=12,
                     padding_y=8,
                     wifi_arc=90,
@@ -287,31 +285,23 @@ screens = [
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 extra_widget.PulseVolumeExtra(
-                    background=colors["cyan"],
                     mode="icon",
                     emoji=True,
                     emoji_list=["󰝟", "󰕿", "󰖀", "󰕾"],
                     theme_path="~/.config/qtile/resources/icons",
-                    fmt="<u>{}</u>",
                     padding=4,
                     step=2,
                 ),
                 # padding workaround for above widget
-                widget.Spacer(background=colors["cyan"], length=4),
-                # widget.PulseVolume(
-                #     background=colors["cyan"],
-                #     emoji=True,
-                #     emoji_list=["󰝟", "󰕿", "󰖀", "󰕾"],
-                # ),
+                widget.Spacer(length=4),
                 extra_widget.UPowerWidget(
-                    background=colors["bg"],
                     battery_height=12,
                     battery_width=24,
                     margin=12,
                     percentage_low=0.3,
                     percentage_critical=0.2,
                 ),
-                widget.Clock(format="%a %d %b %H:%M", background=colors["green"]),
+                widget.Clock(format="%a %d %b %H:%M"),
                 widget.CurrentLayoutIcon(scale=0.8),
             ],
             32,
