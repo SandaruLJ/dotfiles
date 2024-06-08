@@ -7,7 +7,7 @@ fwupd
 refind
 grub
 
-vim
+gvim
 bash-completion
 networkmanager
 man-db
