@@ -140,7 +140,7 @@ for vt in range(1, 8):
 groups = [
     Group(name="a", label=""),
     Group(name="s", label=""),
-    Group(name="d", label=""),
+    Group(name="d", label=""),
     Group(name="f", label=""),
     Group(name="u", label=""),
     Group(name="i", label=""),

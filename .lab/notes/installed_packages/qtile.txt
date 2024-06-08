@@ -1,6 +1,6 @@
 qtile
 
-ttf-font-awesome
+ttf-nerd-fonts-symbols-mono
 python-iwlib
 
 picom
