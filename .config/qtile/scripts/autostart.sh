@@ -13,3 +13,9 @@ redshift &
 # compositor
 picom -b
 
+# keyring
+if (! pidof gnome-keyring-daemon); then
+    dbus-update-activation-environment --all
+    gnome-keyring-daemon --start
+fi
+
