@@ -33,6 +33,8 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from qtile_extras import widget as extra_widget, hook as extra_hook
 
+from custom import widget as custom_widget
+
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -284,16 +286,10 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                extra_widget.PulseVolumeExtra(
-                    mode="icon",
+                custom_widget.PulseVolume(
                     emoji=True,
                     emoji_list=["󰝟", "󰕿", "󰖀", "󰕾"],
-                    theme_path="~/.config/qtile/resources/icons",
-                    padding=4,
-                    step=2,
                 ),
-                # padding workaround for above widget
-                widget.Spacer(length=4),
                 extra_widget.UPowerWidget(
                     battery_height=12,
                     battery_width=24,
