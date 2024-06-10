@@ -3,9 +3,14 @@ from libqtile.widget.pulse_volume import pulse
 
 
 class PulseVolume(QPulseVolume):
+    defaults = [("text_length", 36, "Maximum limit for sink info text.")]
+
     def __init__(self, **config):
         self._set_mouse_callbacks(config)
         super().__init__(**config)
+
+        self.add_defaults(self.defaults)
+
         self.sink = None
         self.show_sink_info = False
         self.sink_info_text = ""
@@ -34,10 +39,10 @@ class PulseVolume(QPulseVolume):
             )
             # Center vertically
             y_offset = (self.bar.height - layout.height) / 2
-            # Set layout as wide as text
-            layout.width = self._max_text_length(self.sink_info_text)
+            # Set width, accounting for text length limit
+            layout.width = self._max_text_length(text[:self.text_length])
 
-            # Draw and increase the offset
+            # Draw the text box
             layout.draw(offset, y_offset)
 
         # Redraw the bar
@@ -59,7 +64,7 @@ class PulseVolume(QPulseVolume):
 
         sink = self.sink.description
         active_port = self.sink.port_active.description
-        self.sink_info_text = f"{active_port} - {sink} ({volume}%)"
+        self.sink_info_text = f"({volume}%) {active_port} - {sink}"
 
     def calculate_length(self):
         parent = super().calculate_length()
@@ -67,7 +72,7 @@ class PulseVolume(QPulseVolume):
             return parent
 
         # Add length of sink info text to that of parent widget
-        sink_info_text = self._max_text_length(self.sink_info_text)
+        sink_info_text = self._max_text_length(self.sink_info_text[:self.text_length])
         return parent + sink_info_text + self.actual_padding
 
     def _max_text_length(self, text):
