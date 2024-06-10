@@ -8,6 +8,7 @@ python-pulsectl-asyncio
 picom
 redshift
 
+wireplumber
 brightnessctl
 playerctl
 rofi
