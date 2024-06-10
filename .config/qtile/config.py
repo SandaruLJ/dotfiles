@@ -91,21 +91,42 @@ keys = [
     Key([mod], "e", lazy.spawn("rofi -show drun"), desc="Open application launcher"),
     Key([mod], "w", lazy.spawn("rofi -show window"), desc="Open window selector"),
     # Volume control
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("pamixer -i 1"), desc="Increase volume"),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("pamixer -d 1"), desc="Decrease volume"),
+    Key(
+        [],
+        "XF86AudioRaiseVolume",
+        lazy.spawn("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 1%+"),
+        desc="Increase volume",
+    ),
+    Key(
+        [],
+        "XF86AudioLowerVolume",
+        lazy.spawn("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 1%-"),
+        desc="Decrease volume",
+    ),
     Key(
         ["shift"],
         "XF86AudioRaiseVolume",
-        lazy.spawn("pamixer -i 5"),
+        lazy.spawn("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"),
         desc="Increase volume (higher steps)"
     ),
     Key(
         ["shift"],
         "XF86AudioLowerVolume",
-        lazy.spawn("pamixer -d 5"),
+        lazy.spawn("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-"),
         desc="Decrease volume (higher steps)"
     ),
-    Key([], "XF86AudioMute", lazy.spawn("pamixer -t"), desc="Toggle mute"),
+    Key(
+        [],
+        "XF86AudioMute",
+        lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
+        desc="Toggle mute"
+    ),
+    Key(
+        [],
+        "XF86AudioMicMute",
+        lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
+        desc="Toggle mic mute"
+    ),
     # Brightness control
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s +5%"), desc="Increase brightness"),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 5%-"), desc="Increase brightness"),
@@ -261,6 +282,7 @@ screens = [
                     name_transform=lambda name: name.upper(),
                 ),
                 widget.Systray(),
+                widget.Spacer(widget_defaults["padding"]),
                 widget.TextBox(
                     text="",
                     mouse_callbacks={
