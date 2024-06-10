@@ -200,7 +200,7 @@ for i in groups:
 # Dropdown windows
 groups.append(
     ScratchPad("scratchpad", [
-        DropDown("dd_term", terminal, opacity=0.8),
+        DropDown("dd_term", terminal),
     ]),
 )
 
