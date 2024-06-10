@@ -3,7 +3,10 @@ from libqtile.widget.pulse_volume import pulse
 
 
 class PulseVolume(QPulseVolume):
-    defaults = [("text_length", 36, "Maximum limit for sink info text.")]
+    defaults = [
+        ("text_length", 36, "Maximum limit for sink info text."),
+        ("sink_info_timeout", 5, "Time to show sink info text."),
+    ]
 
     def __init__(self, **config):
         self._set_mouse_callbacks(config)
@@ -14,6 +17,7 @@ class PulseVolume(QPulseVolume):
         self.sink = None
         self.show_sink_info = False
         self.sink_info_text = ""
+        self.hide_timer = None
 
     def _set_mouse_callbacks(self, config):
         default_callbacks = {"Button1": self.toggle_sink_info}
@@ -50,6 +54,14 @@ class PulseVolume(QPulseVolume):
 
     def toggle_sink_info(self):
         self.show_sink_info = not self.show_sink_info
+        if self.show_sink_info:
+            self.hide_timer = self.timeout_add(self.sink_info_timeout, self.hide)
+        else:
+            self.hide_timer and self.hide_timer.cancel()
+        self.bar.draw()
+
+    def hide(self):
+        self.show_sink_info = False
         self.bar.draw()
 
     def get_vals(self, vol, muted):
