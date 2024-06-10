@@ -62,9 +62,15 @@ class PulseVolume(QPulseVolume):
         if not self.sink:
             return
 
+        prev_length = len(self.sink_info_text)
+
         sink = self.sink.description
         active_port = self.sink.port_active.description
         self.sink_info_text = f"({volume}%) {active_port} - {sink}"
+
+        # Redraw bar if text length changes
+        if prev_length != len(self.sink_info_text):
+            self.bar.draw()
 
     def calculate_length(self):
         parent = super().calculate_length()
