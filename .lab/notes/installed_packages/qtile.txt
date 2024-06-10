@@ -9,6 +9,7 @@ picom
 redshift
 
 brightnessctl
+playerctl
 rofi
 feh
 scrot

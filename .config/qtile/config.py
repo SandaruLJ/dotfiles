@@ -121,12 +121,17 @@ keys = [
         lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
         desc="Toggle mute"
     ),
+    # Mic control
     Key(
         [],
         "XF86AudioMicMute",
         lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
         desc="Toggle mic mute"
     ),
+    # Playback control
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), "Play/pause media"),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next"), "Next track"),
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), "Previous track"),
     # Brightness control
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s +5%"), desc="Increase brightness"),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 5%-"), desc="Increase brightness"),
