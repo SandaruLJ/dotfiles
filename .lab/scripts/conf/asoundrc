@@ -1,5 +1,0 @@
-# Exclusive ALSA playback
-pcm.!default {
-    type plug
-    slave.pcm hw
-}
