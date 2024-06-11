@@ -256,6 +256,7 @@ layouts = [
 widget_defaults = dict(
     font="monospace",
     fontsize=18,
+    icon_size=24,
     padding=12,
 )
 extension_defaults = widget_defaults.copy()
@@ -286,7 +287,9 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.Systray(),
+                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+                extra_widget.StatusNotifier(),
+                # widget.Systray(),
                 widget.Spacer(widget_defaults["padding"]),
                 widget.TextBox(
                     text="",
@@ -311,8 +314,6 @@ screens = [
                     padding_y=8,
                     wifi_arc=90,
                 ),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
                 custom_widget.PulseVolume(
                     emoji=True,
                     emoji_list=["󰝟", "󰕿", "󰖀", "󰕾"],
