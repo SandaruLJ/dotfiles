@@ -17,6 +17,11 @@ if [[ -s ".bash_aliases_tmp" ]]; then
     source .bash_aliases_tmp
 fi
 
+# Source bash completions
+if [[ -r /usr/share/bash-completion/bash_completion ]]; then
+  . /usr/share/bash-completion/bash_completion
+fi
+
 # Erase duplicates from history
 HISTCONTROL=erasedups
 
