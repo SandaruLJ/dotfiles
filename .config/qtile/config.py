@@ -32,6 +32,7 @@ from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from qtile_extras import widget as extra_widget, hook as extra_hook
+from qtile_extras.widget.decorations import PowerLineDecoration
 
 from custom import widget as custom_widget
 from custom.functions import window
@@ -277,6 +278,12 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+powerline = {
+    "decorations": [
+        PowerLineDecoration(path="arrow_right")
+    ]
+}
+
 screens = [
     Screen(
         bottom=bar.Bar(
@@ -325,16 +332,20 @@ screens = [
                 ),
                 widget.Net(
                     format="{down:>6.1f}{down_suffix:>2}  {up:>6.1f}{up_suffix:>2} ",
+                    background=colors["green"],
                 ),
                 extra_widget.WiFiIcon(
                     interface="wlp2s0",
                     padding_x=12,
                     padding_y=8,
                     wifi_arc=90,
+                    background=colors["green"],
+                    **powerline,
                 ),
                 custom_widget.PulseVolume(
                     emoji=True,
                     emoji_list=["󰝟", "󰕿", "󰖀", "󰕾"],
+                    background=colors["blue"],
                 ),
                 extra_widget.UPowerWidget(
                     battery_height=12,
@@ -342,8 +353,11 @@ screens = [
                     margin=12,
                     percentage_low=0.3,
                     percentage_critical=0.2,
+                    border_charge_colour=colors["white"],
+                    background=colors["blue"],
+                    **powerline,
                 ),
-                widget.Clock(format="%a %d %b %H:%M"),
+                widget.Clock(format="%a %d %b %H:%M", background=colors["purple"]),
                 widget.CurrentLayoutIcon(scale=0.8),
             ],
             32,
