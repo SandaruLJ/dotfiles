@@ -34,6 +34,7 @@ from libqtile.utils import guess_terminal
 from qtile_extras import widget as extra_widget, hook as extra_hook
 
 from custom import widget as custom_widget
+from custom.functions import window
 
 
 mod = "mod4"
@@ -90,6 +91,21 @@ keys = [
     # Open application launcher
     Key([mod], "e", lazy.spawn("rofi -show drun"), desc="Open application launcher"),
     Key([mod], "w", lazy.spawn("rofi -show window"), desc="Open window selector"),
+    # Switch monitors
+    Key([mod], "period", lazy.next_screen(), desc="Switch to next monitor"),
+    Key([mod], "comma", lazy.next_screen(), desc="Switch to previous monitor"),
+    Key(
+        [mod, "shift"],
+        "period",
+        lazy.function(window.move_to_next_screen),
+        desc="Move window to next monitor"
+    ),
+    Key(
+        [mod, "shift"],
+        "comma",
+        lazy.function(window.move_to_prev_screen),
+        desc="Move window to previous monitor"
+    ),
     # Volume control
     Key(
         [],
@@ -267,9 +283,11 @@ screens = [
             [
                 widget.GroupBox(
                     fontsize=20,
-                    highlight_method="text",
-                    this_current_screen_border=colors["accent"],
-                    this_screen_border=colors["accent"],
+                    highlight_method="block",
+                    this_current_screen_border=colors["green"],
+                    other_screen_border=colors["red"],
+                    this_screen_border=colors["red"],
+                    other_current_screen_border=colors["green"],
                     padding=4,
                 ),
                 widget.Prompt(
@@ -349,10 +367,10 @@ mouse = [
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
-follow_mouse_focus = True
+follow_mouse_focus = False
 bring_front_click = False
 floats_kept_above = True
-cursor_warp = False
+cursor_warp = True
 floating_layout = layout.Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
