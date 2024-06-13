@@ -19,3 +19,6 @@ if (! pidof gnome-keyring-daemon); then
     gnome-keyring-daemon --start
 fi
 
+# notification daemon
+dunst &
+

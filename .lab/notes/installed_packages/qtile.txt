@@ -4,6 +4,7 @@ ttf-nerd-fonts-symbols-mono
 python-iwlib
 python-dbus-next
 python-pulsectl-asyncio
+python-pyxdg
 
 picom
 redshift
@@ -12,6 +13,7 @@ wireplumber
 brightnessctl
 playerctl
 rofi
+dunst
 feh
 scrot
 i3lock
