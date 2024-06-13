@@ -238,11 +238,11 @@ keys.extend([
 # Colours
 colors = {
     "bg": "#181818",
-    "accent": "#8AB4F8",
     "black": "#000",
     "white": "#FFF",
     "green": "#6A994E",
     "blue": "#2191FB",
+    "jordy-blue": "#8AB4F8",
     "red": "#C33C54",
     "purple": "#AF47D2",
     "cyan": "#0E9594",
@@ -251,7 +251,7 @@ colors = {
 
 layouts = [
     layout.Columns(
-        border_focus=colors["accent"],
+        border_focus=colors["jordy-blue"],
         border_focus_stack=["#d75f5f", "#8f3d3d"],
         border_width=4,
         margin=4
@@ -274,13 +274,13 @@ widget_defaults = dict(
     font="monospace",
     fontsize=18,
     icon_size=24,
-    padding=12,
+    padding=16,
 )
 extension_defaults = widget_defaults.copy()
 
 powerline = {
     "decorations": [
-        PowerLineDecoration(path="arrow_right")
+        PowerLineDecoration(path="forward_slash")
     ]
 }
 
@@ -291,17 +291,17 @@ screens = [
                 widget.GroupBox(
                     fontsize=20,
                     highlight_method="block",
-                    this_current_screen_border=colors["green"],
-                    other_screen_border=colors["red"],
-                    this_screen_border=colors["red"],
-                    other_current_screen_border=colors["green"],
-                    padding=4,
+                    this_current_screen_border=colors["blue"],
+                    other_screen_border=colors["green"],
+                    this_screen_border=colors["green"],
+                    other_current_screen_border=colors["blue"],
+                    padding=8,
                 ),
                 widget.Prompt(
                     prompt="$ ",
                     font="monospace",
                     foreground=colors["green"],
-                    cursor_color="#FFF",
+                    cursor_color=colors["green"],
                     background="#000",
                     padding=4,
                 ),
@@ -315,8 +315,7 @@ screens = [
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 extra_widget.StatusNotifier(),
                 # widget.Systray(),
-                widget.Spacer(widget_defaults["padding"]),
-                widget.TextBox(
+                extra_widget.TextBox(
                     text="",
                     mouse_callbacks={
                         "Button1": lambda : qtile.spawn(
@@ -328,7 +327,8 @@ screens = [
                         "Button2": lambda : qtile.spawn(
                             os.path.expanduser("~/.config/qtile/scripts/wallpaper_cycle.sh --rand")
                         ),
-                    }
+                    },
+                    **powerline,
                 ),
                 widget.Net(
                     format="{down:>6.1f}{down_suffix:>2}  {up:>6.1f}{up_suffix:>2} ",
