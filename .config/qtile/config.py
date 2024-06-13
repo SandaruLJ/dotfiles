@@ -35,7 +35,7 @@ from qtile_extras import widget as extra_widget, hook as extra_hook
 from qtile_extras.widget.decorations import PowerLineDecoration
 
 from custom import widget as custom_widget
-from custom.functions import window
+from custom.functions import callback, poll, window
 
 
 mod = "mod4"
@@ -357,7 +357,21 @@ screens = [
                     background=colors["blue"],
                     **powerline,
                 ),
-                widget.Clock(format="%a %d %b %H:%M", background=colors["purple"]),
+                extra_widget.Clock(
+                    format="%a %d %b %H:%M",
+                    background=colors["purple"],
+                    **powerline,
+                ),
+                widget.GenPollText(
+                    name="notifications",
+                    func=poll.check_notifications,
+                    mouse_callbacks={
+                        "Button1": lazy.function(callback.toggle_notification_history),
+                        "Button2": lazy.spawn("dunstctl set-paused toggle"),
+                        "Button3": lazy.spawn("dunstctl history-clear"),
+                    },
+                    update_interval=1,
+                ),
                 widget.CurrentLayoutIcon(scale=0.8),
             ],
             32,
