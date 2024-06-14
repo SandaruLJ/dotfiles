@@ -9,6 +9,7 @@ python-pyxdg
 picom
 redshift
 udiskie
+gnome-keyring
 
 wireplumber
 brightnessctl
@@ -18,11 +19,10 @@ dunst
 feh
 scrot
 i3lock
-gnome-keyring
-seahorse
 
 alacritty
 thunar
 zathura
 zathura-pdf-mupdf
+seahorse
 
