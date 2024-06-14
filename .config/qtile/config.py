@@ -364,15 +364,22 @@ screens = [
                 ),
                 widget.GenPollText(
                     name="notifications",
-                    func=poll.check_notifications,
+                    func=poll.get_notification_status,
                     mouse_callbacks={
                         "Button1": lazy.function(callback.toggle_notification_history),
-                        "Button2": lazy.spawn("dunstctl set-paused toggle"),
-                        "Button3": lazy.spawn("dunstctl history-clear"),
+                        "Button2": lazy.function(callback.pause_notifications),
+                        "Button3": lazy.function(callback.clear_notifications),
                     },
                     update_interval=1,
+                    background=colors["yellow"],
+                    foreground=colors["black"]
                 ),
-                widget.CurrentLayoutIcon(scale=0.8),
+                extra_widget.CurrentLayoutIcon(
+                    scale=0.8,
+                    use_mask=True,
+                    background=colors["yellow"],
+                    foreground=colors["black"],
+                ),
             ],
             32,
             # background=colors["bg"],
