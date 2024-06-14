@@ -8,6 +8,7 @@ python-pyxdg
 
 picom
 redshift
+udiskie
 
 wireplumber
 brightnessctl

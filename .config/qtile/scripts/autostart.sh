@@ -22,3 +22,6 @@ fi
 # notification daemon
 dunst &
 
+# disk manager
+udiskie &
+
