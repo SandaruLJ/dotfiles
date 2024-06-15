@@ -3,24 +3,21 @@ from libqtile.widget.pulse_volume import pulse
 
 
 class PulseVolume(QPulseVolume):
-    defaults = [
-        ("text_length", 36, "Maximum limit for sink info text."),
-        ("sink_info_timeout", 5, "Time to show sink info text."),
-    ]
-
-    def __init__(self, **config):
+    def __init__(self, text_length=36, device_info_timeout=5, error="󱈸", **config):
         self._set_mouse_callbacks(config)
         super().__init__(**config)
 
-        self.add_defaults(self.defaults)
-
         self.sink = None
-        self.show_sink_info = False
-        self.sink_info_text = ""
+        self.show_device_info = False
+        self.device_info_text = ""
         self.hide_timer = None
+        self.error = error
+        self.text_length = text_length
+        self.device_info_timeout = device_info_timeout
+        self.text = self.error  # Show error until connected to pulse server
 
     def _set_mouse_callbacks(self, config):
-        default_callbacks = {"Button1": self.toggle_sink_info}
+        default_callbacks = {"Button1": self.toggle_device_info}
         if "mouse_callbacks" not in config:
             config.update(mouse_callbacks=default_callbacks)
 
@@ -31,11 +28,11 @@ class PulseVolume(QPulseVolume):
         # Draw parent widget (text/emoji/icon indicator)
         super().draw()
 
-        # Define offset for sink info text
+        # Define offset for device info text
         offset = super().calculate_length()
 
-        if self.show_sink_info and self.sink_info_text:
-            text = self.sink_info_text
+        if self.show_device_info and self.device_info_text:
+            text = self.device_info_text
 
             # Create a text box
             layout = self.drawer.textlayout(
@@ -52,46 +49,51 @@ class PulseVolume(QPulseVolume):
         # Redraw the bar
         self.drawer.draw(offsetx=self.offset, offsety=self.offsety, width=self.length)
 
-    def toggle_sink_info(self):
-        self.show_sink_info = not self.show_sink_info
-        if self.show_sink_info:
-            self.hide_timer = self.timeout_add(self.sink_info_timeout, self.hide)
+    def _update_drawer(self):
+        super()._update_drawer()
+        if pulse.pulse and not pulse.pulse.connected:
+            self.text = self.error
+
+    def toggle_device_info(self):
+        self.show_device_info = not self.show_device_info
+        if self.show_device_info:
+            self.hide_timer = self.timeout_add(self.device_info_timeout, self.hide_device_info)
         else:
             self.hide_timer and self.hide_timer.cancel()
         self.bar.draw()
 
-    def hide(self):
-        self.show_sink_info = False
+    def hide_device_info(self):
+        self.show_device_info = False
         self.bar.draw()
 
     def get_vals(self, vol, muted):
-        # Override subscribed method to pulse so sink info can be updated
+        # Override subscribed method to pulse so device info can be updated
         self.sink = pulse.default_sink
-        self._update_sink_info_text(vol)
+        self._update_device_info_text(vol)
         super().get_vals(vol, muted)
 
-    def _update_sink_info_text(self, volume):
+    def _update_device_info_text(self, volume):
         if not self.sink:
             return
 
-        prev_length = len(self.sink_info_text)
+        prev_length = len(self.device_info_text)
 
         sink = self.sink.description
         active_port = self.sink.port_active.description
-        self.sink_info_text = f"({volume}%) {active_port} - {sink}"
+        self.device_info_text = f"({volume}%) {active_port} - {sink}"
 
         # Redraw bar if text length changes
-        if prev_length != len(self.sink_info_text):
+        if prev_length != len(self.device_info_text):
             self.bar.draw()
 
     def calculate_length(self):
         parent = super().calculate_length()
-        if not (self.show_sink_info and self.sink_info_text):
+        if not (self.show_device_info and self.device_info_text):
             return parent
 
-        # Add length of sink info text to that of parent widget
-        sink_info_text = self._max_text_length(self.sink_info_text[:self.text_length])
-        return parent + sink_info_text + self.actual_padding
+        # Add length of device info text to that of parent widget
+        device_info_text = self._max_text_length(self.device_info_text[:self.text_length])
+        return parent + device_info_text + self.actual_padding
 
     def _max_text_length(self, text):
         return self.drawer.max_layout_size([text], self.font, self.fontsize)[0]
