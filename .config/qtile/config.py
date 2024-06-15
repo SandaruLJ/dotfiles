@@ -248,6 +248,7 @@ colors = {
     "purple": "#AF47D2",
     "cyan": "#0E9594",
     "yellow": "#FFD60A",
+    "orange": "#FB8B21",
 }
 
 layouts = [
@@ -346,6 +347,12 @@ screens = [
                 custom_widget.PulseVolume(
                     emoji=True,
                     emoji_list=["󰝟", "󰕿", "󰖀", "󰕾"],
+                    error="󰕾󱈸",
+                    background=colors["blue"],
+                ),
+                custom_widget.PulseMic(
+                    error="󰍬󱈸",
+                    icon_color=colors["orange"],
                     background=colors["blue"],
                 ),
                 extra_widget.UPowerWidget(
