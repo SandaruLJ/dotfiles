@@ -205,7 +205,7 @@
     hide_duplicate_count = false
 
     # Display indicators for URLs (U) and actions (A).
-    show_indicators = yes
+    show_indicators = no
 
     ### Icons ###
 
@@ -276,7 +276,7 @@
     # Useful to enforce the timeout set by dunst configuration. Without this
     # parameter, an application may close the notification sent before the
     # user defined timeout.
-    ignore_dbusclose = false
+    ignore_dbusclose = true
 
     ### Wayland ###
     # These settings are Wayland-specific. They have no effect when using X11
@@ -482,5 +482,13 @@
 #[stack-volumes]
 #    appname = "some_volume_notifiers"
 #    set_stack_tag = "volume"
-#
+
+[lollypop]
+    desktop_entry = "org.gnome.Lollypop"
+    history_ignore = yes
+
+[spotify]
+    appname = "Spotify"
+    history_ignore = yes
+
 # vim: ft=cfg
