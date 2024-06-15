@@ -25,6 +25,7 @@
 # SOFTWARE.
 
 import os
+import re
 import subprocess
 
 from libqtile import bar, hook, layout, qtile, widget
@@ -416,6 +417,7 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
+        Match(wm_class="slack", wm_type=re.compile("_NET_WM_WINDOW_TYPE_HUDDLE")),  # Slack huddle
     ]
 )
 auto_fullscreen = True
