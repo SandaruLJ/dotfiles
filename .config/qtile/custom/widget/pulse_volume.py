@@ -1,3 +1,4 @@
+from libqtile.widget.base import _TextBox
 from libqtile.widget.pulse_volume import PulseVolume as QPulseVolume
 from libqtile.widget.pulse_volume import pulse
 
@@ -97,4 +98,7 @@ class PulseVolume(QPulseVolume):
 
     def _max_text_length(self, text):
         return self.drawer.max_layout_size([text], self.font, self.fontsize)[0]
+
+    def button_press(self, x, y, button):
+        _TextBox.button_press(self, x, y, button)
 
