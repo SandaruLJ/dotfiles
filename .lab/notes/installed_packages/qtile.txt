@@ -20,7 +20,7 @@ feh
 scrot
 i3lock
 
-alacritty
+kitty
 thunar
 zathura
 zathura-pdf-mupdf
