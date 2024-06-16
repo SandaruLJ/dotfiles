@@ -24,5 +24,6 @@ alacritty
 thunar
 zathura
 zathura-pdf-mupdf
+pavucontrol
 seahorse
 
