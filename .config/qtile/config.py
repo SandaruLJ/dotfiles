@@ -187,13 +187,36 @@ for vt in range(1, 8):
 
 groups = [
     Group(name="a", label=""),
-    Group(name="s", label=""),
-    Group(name="d", label=""),
-    Group(name="f", label=""),
-    Group(name="u", label=""),
-    Group(name="i", label=""),
-    Group(name="o", label=""),
-    Group(name="p", label=""),
+    Group(name="s", label="", matches=[
+        Match(wm_class="thunar"),
+    ]),
+    Group(name="d", label="", matches=[
+        Match(wm_class="firefox"),
+        Match(wm_class="google-chrome"),
+    ]),
+    Group(name="f", label="", matches=[
+        Match(wm_class="code"),
+        Match(wm_class="sublime_text"),
+        Match(wm_class="jetbrains-idea"),
+        Match(wm_class="jetbrains-pycharm"),
+    ]),
+    Group(name="u", label="", matches=[
+        Match(wm_class="slack"),
+    ]),
+    Group(name="i", label="", matches=[
+        Match(wm_class="org.pwmt.zathura"),
+        Match(wm_class="obsidian"),
+    ]),
+    Group(name="o", label="", matches=[
+        Match(wm_class="lollypop"),
+        Match(wm_class="spotify"),
+        Match(wm_class="Kodi"),
+        Match(wm_class="REAPER"),
+        Match(wm_class="obs"),
+    ]),
+    Group(name="p", label="", matches=[
+        Match(wm_class="pavucontrol"),
+    ]),
 ]
 
 for i in groups:
