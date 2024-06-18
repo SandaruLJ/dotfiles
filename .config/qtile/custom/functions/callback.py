@@ -76,6 +76,18 @@ def volume_change(qtile, action):
     )
 
 
+def toggle_mute(qtile):
+    hidden = volume_slider.hidden
+    volume, mute = _get_volume_results()
+
+    if hidden:
+        volume_slider._configure(qtile)
+        volume_slider.show()
+    volume_slider.update(volume if mute else 0)
+
+    qtile.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
+
+
 def _get_volume_results():
     results = subprocess.check_output(
         ["wpctl", "get-volume", "@DEFAULT_AUDIO_SINK@"], text=True
