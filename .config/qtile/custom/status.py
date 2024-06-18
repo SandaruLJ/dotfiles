@@ -17,3 +17,9 @@ class MicStatus(Enum):
     NORMAL = "󰍬"
     MUTE = "󰍭"
 
+
+class BrightnessStatus(Enum):
+    LOW = "󰃞"
+    MEDIUM = "󰃟"
+    HIGH = "󰃠"
+

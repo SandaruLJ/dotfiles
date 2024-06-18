@@ -151,8 +151,17 @@ keys = [
     Key([], "XF86AudioNext", lazy.spawn("playerctl next"), "Next track"),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), "Previous track"),
     # Brightness control
-    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s +5%"), desc="Increase brightness"),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 5%-"), desc="Increase brightness"),
+    Key(
+        [],
+        "XF86MonBrightnessUp",
+        lazy.function(callback.change_brightness, steps=5),
+        desc="Increase brightness"
+    ),
+    Key(
+        [], "XF86MonBrightnessDown",
+        lazy.function(callback.change_brightness, steps=5, decrease=True),
+        desc="Increase brightness"
+    ),
     # Lock screen
     Key(
         ["mod1", "control"],
