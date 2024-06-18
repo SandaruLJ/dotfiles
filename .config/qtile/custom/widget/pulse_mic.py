@@ -3,6 +3,7 @@ import asyncio
 import pulsectl_asyncio
 from libqtile.widget.pulse_volume import PulseConnection as QPulseConnection
 from libqtile.widget.volume import Volume
+from libqtile.utils import logger
 
 from custom.widget.pulse_volume import PulseVolume
 
@@ -39,15 +40,12 @@ class PulseConnection(QPulseConnection):
         await self.get_source_info()
 
     async def get_source_info(self):
-        sources = [
-            source for source in await self.pulse.source_list() if source.name == self.default_source_name
-        ]
-        if not sources:
+        self.default_source = await self.pulse.source_default_get()
+        if not self.default_source:
             logger.warning("Could not get info for default source")
             self.default_source = None
             return
 
-        self.default_source = sources[0]
         self.update_clients()
 
     def get_mic_status(self):
