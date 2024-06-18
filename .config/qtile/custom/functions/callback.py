@@ -56,16 +56,14 @@ DEFAULT_SOURCE = "@DEFAULT_AUDIO_SOURCE@"
 volume_slider = VolumeSlider()
 mic_slider = MicSlider()
 
-def volume_change(qtile, action):
+def change_volume(qtile, steps, decrease=False):
     hidden = volume_slider.hidden
 
     # Only refresh actual volume level when displaying after being hidden; prevents stuttering
     if hidden:
         volume_change.volume, volume_change.mute = _get_volume_results(DEFAULT_SINK)
 
-    value, decrease = action.value
-
-    volume_change.volume += (-value if decrease else value) / 100
+    volume_change.volume += (-steps if decrease else steps) / 100
 
     if hidden:
         volume_slider._configure(qtile)
@@ -74,7 +72,7 @@ def volume_change(qtile, action):
 
     if volume_change.mute:
         qtile.spawn(f"wpctl set-mute {DEFAULT_SINK} 0")
-    qtile.spawn(f"wpctl set-volume -l 1.0 {DEFAULT_SINK} {value}%{'-' if decrease else '+'}")
+    qtile.spawn(f"wpctl set-volume -l 1.0 {DEFAULT_SINK} {steps}%{'-' if decrease else '+'}")
 
 
 def toggle_mute(qtile):

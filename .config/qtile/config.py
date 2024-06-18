@@ -36,7 +36,6 @@ from qtile_extras import widget as extra_widget, hook as extra_hook
 from qtile_extras.widget.decorations import PowerLineDecoration
 
 from custom import widget as custom_widget
-from custom.actions import VolumeAction
 from custom.functions import callback, poll, window
 
 
@@ -113,25 +112,25 @@ keys = [
     Key(
         [],
         "XF86AudioRaiseVolume",
-        lazy.function(callback.volume_change, VolumeAction.UP),
+        lazy.function(callback.change_volume, steps=1),
         desc="Increase volume",
     ),
     Key(
         [],
         "XF86AudioLowerVolume",
-        lazy.function(callback.volume_change, VolumeAction.DOWN),
+        lazy.function(callback.change_volume, steps=1, decrease=True),
         desc="Decrease volume",
     ),
     Key(
         ["shift"],
         "XF86AudioRaiseVolume",
-        lazy.function(callback.volume_change, VolumeAction.UP_HIGHER_STEPS),
+        lazy.function(callback.change_volume, steps=5),
         desc="Increase volume (higher steps)"
     ),
     Key(
         ["shift"],
         "XF86AudioLowerVolume",
-        lazy.function(callback.volume_change, VolumeAction.DOWN_HIGHER_STEPS),
+        lazy.function(callback.change_volume, steps=5, decrease=True),
         desc="Decrease volume (higher steps)"
     ),
     Key(
