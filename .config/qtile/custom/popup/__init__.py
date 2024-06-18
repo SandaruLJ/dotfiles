@@ -1,3 +1,3 @@
 from .generic_popup import GenericPopup
-from .volume import VolumeSlider
+from .volume import MicSlider, VolumeSlider
 

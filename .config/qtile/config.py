@@ -144,7 +144,7 @@ keys = [
     Key(
         [],
         "XF86AudioMicMute",
-        lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
+        lazy.function(callback.toggle_mic_mute),
         desc="Toggle mic mute"
     ),
     # Playback control

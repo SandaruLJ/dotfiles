@@ -1,5 +1,5 @@
 from . import GenericPopup
-from ..status import VolumeStatus
+from ..status import MicStatus, VolumeStatus
 
 
 class VolumeSlider(GenericPopup):
@@ -12,6 +12,16 @@ class VolumeSlider(GenericPopup):
             icon = VolumeStatus.MEDIUM.value
         else:
             icon = VolumeStatus.HIGH.value
+
+        self.update_controls(icon=icon, value=volume)
+
+
+class MicSlider(GenericPopup):
+    def update(self, volume):
+        if volume <= 0:
+            icon = MicStatus.MUTE.value
+        else:
+            icon = MicStatus.NORMAL.value
 
         self.update_controls(icon=icon, value=volume)
 

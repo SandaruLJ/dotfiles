@@ -12,3 +12,8 @@ class VolumeStatus(Enum):
     MEDIUM = "󰖀"
     HIGH = "󰕾"
 
+
+class MicStatus(Enum):
+    NORMAL = "󰍬"
+    MUTE = "󰍭"
+
