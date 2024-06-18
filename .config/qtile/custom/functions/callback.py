@@ -1,8 +1,11 @@
 import subprocess
 
 from .poll import check_notifications
+from ..popup import VolumeSlider
 from ..status import NotificationStatus
 
+
+# Notifications
 
 def toggle_notification_history(qtile):
     _, paused = check_notifications()
@@ -43,4 +46,43 @@ def _update_notification_widget(qtile, paused, count):
         widget.update(NotificationStatus.NEW.value)
     else:
         widget.update(NotificationStatus.CLEAR.value)
+
+
+# Actions/Shortcuts
+
+volume_slider = VolumeSlider()
+
+def volume_change(qtile, action):
+    hidden = volume_slider.hidden
+
+    # Only refresh actual volume level when displaying after being hidden; prevents stuttering
+    if hidden:
+        volume_change.volume, volume_change.mute = _get_volume_results()
+
+    value, decrease = action.value
+
+    volume_change.volume += (-value if decrease else value) / 100
+
+    if hidden:
+        volume_slider._configure(qtile)
+        volume_slider.show()
+    volume_slider.update(volume_change.volume)
+
+    if volume_change.mute:
+        qtile.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0")
+    qtile.spawn(
+        "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ {}%{}"
+        .format(value, "-" if decrease else "+")
+    )
+
+
+def _get_volume_results():
+    results = subprocess.check_output(
+        ["wpctl", "get-volume", "@DEFAULT_AUDIO_SINK@"], text=True
+    ).strip().split(" ")
+
+    volume = float(results[1])
+    mute = len(results) == 3 and results[2] == "[MUTED]"
+
+    return volume, mute
 

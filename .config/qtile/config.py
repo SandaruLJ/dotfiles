@@ -36,6 +36,7 @@ from qtile_extras import widget as extra_widget, hook as extra_hook
 from qtile_extras.widget.decorations import PowerLineDecoration
 
 from custom import widget as custom_widget
+from custom.actions import VolumeAction
 from custom.functions import callback, poll, window
 
 
@@ -112,25 +113,25 @@ keys = [
     Key(
         [],
         "XF86AudioRaiseVolume",
-        lazy.spawn("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 1%+"),
+        lazy.function(callback.volume_change, VolumeAction.UP),
         desc="Increase volume",
     ),
     Key(
         [],
         "XF86AudioLowerVolume",
-        lazy.spawn("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 1%-"),
+        lazy.function(callback.volume_change, VolumeAction.DOWN),
         desc="Decrease volume",
     ),
     Key(
         ["shift"],
         "XF86AudioRaiseVolume",
-        lazy.spawn("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"),
+        lazy.function(callback.volume_change, VolumeAction.UP_HIGHER_STEPS),
         desc="Increase volume (higher steps)"
     ),
     Key(
         ["shift"],
         "XF86AudioLowerVolume",
-        lazy.spawn("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-"),
+        lazy.function(callback.volume_change, VolumeAction.DOWN_HIGHER_STEPS),
         desc="Decrease volume (higher steps)"
     ),
     Key(

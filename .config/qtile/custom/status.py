@@ -5,3 +5,10 @@ class NotificationStatus(Enum):
     NEW = "󱅫"
     PAUSED = "󰂛"
 
+
+class VolumeStatus(Enum):
+    MUTE = "󰝟"
+    LOW = "󰕿"
+    MEDIUM = "󰖀"
+    HIGH = "󰕾"
+
