@@ -28,6 +28,7 @@ wget
 
 trash-cli
 bat
+btop
 pacutils
 
 snapper
