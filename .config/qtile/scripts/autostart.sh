@@ -23,5 +23,5 @@ fi
 dunst &
 
 # disk manager
-udiskie &
+udiskie -s &
 
