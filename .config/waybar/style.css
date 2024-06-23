@@ -105,10 +105,13 @@ window#waybar.empty {
 
 #workspaces button.visible {
     background-color: #64727D;
+}
+
+#workspaces button.active {
     box-shadow: inset 0 -3px #ffffff;
 }
 
-#workspaces button.empty {
+#workspaces button.empty:not(.visible) {
     color: @greyed-out;
 }
 
