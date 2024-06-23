@@ -1,0 +1,328 @@
+/* COLORS */
+@define-color background rgb(33, 38, 49);
+@define-color background-transparent rgba(43, 48, 59, 0.5);
+@define-color greyed-out #555555;
+
+
+/* GENERAL */
+
+* {
+    font-family: monospace;
+    font-size: 18px;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+/* Common properties for widgets */
+#clock,
+#battery,
+#upower,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#bluetooth,
+#pulseaudio,
+#wireplumber,
+#tray,
+#submap,
+#idle_inhibitor,
+#privacy-item,
+#power-profiles-daemon {
+    padding: 0 12px;
+    color: #ffffff;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module on the left side, style its rightmost button */
+.modules-left > widget:last-child > #workspaces button:last-child {
+    padding-right: 16px;
+    border-top-right-radius: 12px;
+}
+
+/* If idle inhibitor is the leftmost or second leftmost module on the right side, style it */
+.modules-right > widget:first-child > #idle_inhibitor, widget:nth-child(2) > #idle_inhibitor {
+    padding-left: 16px;
+    border-top-left-radius: 12px;
+}
+
+
+/* BAR */
+
+window#waybar {
+    background-color: @background-transparent;
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+window#waybar.empty {
+    background-color: transparent;
+}
+
+
+/* WORKSPACES */
+
+#workspaces button {
+    padding: 0 8px;
+    background-color: @background;
+    color: #ffffff;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.visible {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button.empty {
+    color: @greyed-out;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+
+/* CLOCK */
+
+#clock {
+    background-color: #9b59b6;
+    font-size: 16px;
+}
+
+
+/* BATTERY */
+
+#battery {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#battery.charging, #battery.plugged {
+    color: #ffffff;
+    background-color: #26A65B;
+}
+
+
+/* UPOWER */
+
+#upower.discharging {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#upower.charging {
+    color: #ffffff;
+    background-color: #26A65B;
+}
+
+
+/* NETWORK + BLUETOOTH */
+
+#network {
+    padding-left: 16px;
+    padding-right: 8px;
+}
+
+#bluetooth {
+    padding-left: 8px;
+    padding-right: 16px;
+}
+
+#network, #bluetooth {
+    background-color: #2980b9;
+}
+
+
+/* PULSE AUDIO */
+
+#pulseaudio {
+    background-color: #f1c40f;
+    color: #000000;
+}
+
+
+/* SYSTEM TRAY */
+
+#tray {
+    background-color: transparent;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+
+/* IDLE INHIBITOR + BACKLIGHT */
+
+#idle_inhibitor, #backlight {
+    background-color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+}
+
+#backlight {
+    padding-right: 16px;
+}
+
+
+/* PRIVACY INDICATORS */
+
+#privacy-item {
+    color: white;
+    background-color: #e04c16;
+}
+
+#privacy-item.screenshare {
+    padding-left: 16px;
+    padding-right: 8px;
+}
+
+#privacy-item.audio-in {
+    padding-left: 8px;
+    padding-right: 16px;
+}
+
+
+/* POWER PROFILES DAEMON */
+
+#power-profiles-daemon.performance {
+    background-color: #f53c3c;
+    color: #ffffff;
+}
+
+#power-profiles-daemon.balanced {
+    background-color: #2980b9;
+    color: #ffffff;
+}
+
+#power-profiles-daemon.power-saver {
+    background-color: #2ecc71;
+    color: #000000;
+}
+
+
+/* SYSTEM INDICATORS */
+
+#cpu {
+    background-color: #2ecc71;
+    color: #000000;
+}
+
+#memory {
+    background-color: #9b59b6;
+}
+
+#disk {
+    background-color: #964B00;
+}
+
+#temperature {
+    background-color: #f0932b;
+}
+
+#temperature.critical {
+    background-color: #eb4d4b;
+}
+
+
+/* SUBMAP */
+
+#submap {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+
+/* KEYBOARD STATE */
+
+#keyboard-state {
+    background: #97e1ad;
+    color: #000000;
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+
+/* LANGUAGE */
+
+#language {
+    background: #00b093;
+    color: #740864;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+
+/* MISC. */
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+

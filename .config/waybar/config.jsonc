@@ -1,0 +1,206 @@
+// -*- mode: jsonc -*-
+{
+    "position": "bottom",
+    "height": 32,
+    "spacing": 0,
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "tray",
+        "idle_inhibitor",
+        "backlight",
+        "privacy",
+        "pulseaudio",
+        "network",
+        "bluetooth",
+        "battery",
+        "power-profiles-daemon",
+        "clock"
+    ],
+
+    // Modules configuration
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "format": "{icon}",
+        "show-special": true,
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": []
+        },
+        "format-icons": {
+             "1": "",
+             "2": "",
+             "3": "",
+             "4": "",
+             "5": "",
+             "6": "",
+             "7": "",
+             "8": "",
+             "special": "󱡄"
+        },
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+    "hyprland/window": {
+        "format": " {title}",
+        "icon": true
+    },
+    "network": {
+        "format": "{icon}",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "format-alt": "{icon} {essid}  {ifname}",
+        "format-icons": {
+            "wifi": [
+                "<span size='large'>󰤯</span>",
+                "<span size='large'>󰤟</span>",
+                "<span size='large'>󰤢</span>",
+                "<span size='large'>󰤥</span>",
+                "<span size='large'>󰤨</span>"
+            ],
+            "ethernet": "",
+            "linked": "",
+            "disconnected": "<span size='large'>󰤭</span>",
+            "disabled": "<span size='large'>󰤮</span>"
+        }
+    },
+    "bluetooth": {
+        "format-disabled": "󰂲",
+        "format-off": "󰂲",
+        "format-on": "󰂯",
+        "format-connected": "󰂱",
+        "tooltip-format": "{status}",
+        "tooltip-format-connected": "{device_alias}",
+        "tooltip-format-connected-battery": "{device_alias} ({device_battery_percentage}%)"
+    },
+    "pulseaudio": {
+        "format": "{icon}  {format_source}",
+        "format-alt": "{icon}  {format_source}  {desc} ({volume}%)",
+        "format-bluetooth": "{icon} 󰂰  {format_source}",
+        "format-bluetooth-muted": "󰝟  {icon} 󰂰  {format_source}",
+        "format-muted": "󰝟  {icon}  {format_source}",
+        "format-source": "󰍬",
+        "format-source-muted": "󰍭",
+        "format-icons": {
+            "headphone": "󰋋",
+            "headphone-muted": "󰟎",
+            "hands-free": "󰋎",
+            "hands-free-muted": "󰋐",
+            "headset": "󰋎",
+            "headset-muted": "󰋐",
+            "phone": "󰏲",
+            "phone-muted": "󰷯",
+            "portable": "󰏲",
+            "portable-muted": "󰷯",
+            "car": "󰄋",
+            "car-muted": "󰸜",
+            "default": ["󰕿", "󰖀", "󰕾"],
+            "default-muted": "󰝟"
+        },
+        "tooltip-format": "{desc} ({volume}%)",
+        "on-click-right": "pavucontrol",
+        "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}",
+        "format-alt": "{icon} {capacity}% {timeTo}",
+        "format-plugged": "󰚥",
+        "format-icons": {
+            "discharging": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+            "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+        },
+        "tooltip-format": "{capacity}% {timeTo}",
+        "on-click-middle": "~/.config/hypr/scripts/toggle_effects.sh"
+    },
+    "upower": {
+        "format": "",
+        "format-alt": " {percentage} {time}",
+        "icon-size": 20,
+        "hide-if-empty": true,
+        "tooltip": true
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+    "tray": {
+        "icon-size": 20,
+        "spacing": 10
+    },
+    "privacy": {
+        "icon-spacing": 0,
+        "icon-size": 18,
+        "modules": [
+            {"type": "screenshare"},
+            {"type": "audio-in"}
+        ]
+    },
+    "clock": {
+        "format": "{:%a %d %b <span size='large'>󰃭</span> %H:%M}",
+        "format-alt": "{:%H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "timezones": ["Asia/Colombo", "Etc/UTC"],
+        "actions": {
+            "on-click-right": "tz_up"
+        }
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "backlight": {
+        "format": "{icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "tooltip-format": "{percent}%",
+        "on-scroll-up": "brightnessctl s +5%",
+        "on-scroll-down": "brightnessctl s 5%-"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "hyprland/submap": {
+        "format": "<span style=\"italic\">{}</span>"
+    }
+}
