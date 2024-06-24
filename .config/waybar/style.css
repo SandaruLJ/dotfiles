@@ -216,14 +216,18 @@ window#waybar.empty {
 #privacy-item {
     color: white;
     background-color: #e04c16;
+    transition-property: padding;
+    transition-duration: .25s;
 }
 
-#privacy-item.screenshare {
+/* Adjust padding of leftmost privacy item widget, if both are displayed */
+#privacy > :nth-last-child(2) #privacy-item {
     padding-left: 16px;
     padding-right: 8px;
 }
 
-#privacy-item.audio-in {
+/* Adjust padding of rightmost privacy item widget, if both are displayed */
+#privacy > :nth-child(2) #privacy-item {
     padding-left: 8px;
     padding-right: 16px;
 }

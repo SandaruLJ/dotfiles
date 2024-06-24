@@ -59,7 +59,7 @@
         "format": "{icon}",
         "tooltip-format": "{ifname} via {gwaddr}",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)",
-        "format-alt": "{icon} {essid}  {ifname}",
+        "format-alt": "{icon} {essid}{ifname}",
         "format-icons": {
             "wifi": [
                 "<span size='large'>󰤯</span>",
@@ -145,8 +145,8 @@
       }
     },
     "tray": {
-        "icon-size": 20,
-        "spacing": 10
+        "icon-size": 22,
+        "spacing": 12
     },
     "privacy": {
         "icon-spacing": 0,
