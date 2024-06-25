@@ -1,0 +1,122 @@
+@define-color noti-critical-border-color rgba(235, 77, 75, 0.9);
+
+
+.control-center {
+  /* The control center which contains the old notifications + widgets */
+  background: @cc-bg;
+  color: @text-color;
+  border-radius: 12px;
+}
+
+
+/*** Notification Row ***/
+.notification-row .notification-background {
+  padding: 6px 12px;
+}
+
+.notification-row .notification-background .notification {
+  /* The actual notification */
+  padding: 4px;
+}
+
+.notification-row .notification-background .notification.critical {
+  /* Critical priority notification */
+  border: 1px solid @noti-critical-border-color;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .image {
+  /* Notification primary image */
+  border-radius: 12px;
+  margin: 0 12px 0 0;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary {
+  /* Notification summary/title */
+  font-size: 16px;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .time {
+  /* Notification time-ago */
+  font-size: 15px;
+  font-weight: normal;
+  margin-right: 32px;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
+  /* Notification body */
+  font-size: 15px;
+  margin-top: 2px;
+}
+
+.floating-notifications .notification {
+  /* Floating notification */
+  margin-right: 2px;
+  margin-bottom: 8px;
+}
+
+
+/*** Notification Group ***/
+
+.notification-group .notification-group-headers {
+  /* Notification group headers */
+  margin-bottom: 8px;
+}
+
+.notification-group .notification-group-headers .notification-group-icon {
+  color: @text-color;
+  margin-right: 8px;
+}
+
+
+/*** Widgets ***/
+/* Title widget */
+.widget-title {
+  color: @text-color;
+  margin: 8px 16px;
+  font-size: 1.5rem;
+}
+
+.widget-title > button {
+  font-size: initial;
+  color: @text-color;
+  text-shadow: none;
+  background: @noti-bg;
+  border: 1px solid @noti-border-color;
+  box-shadow: none;
+  border-radius: 12px;
+}
+
+.widget-title > button:hover {
+  background: @noti-bg-hover;
+}
+
+/* DND widget */
+.widget-dnd {
+  margin: 8px 16px;
+}
+
+.widget-dnd > switch {
+  border: 1px solid @noti-border-color;
+}
+
+.widget-dnd > switch:checked {
+  background: @bg-selected;
+}
+
+/* Mpris widget */
+.widget-mpris .widget-mpris-player > box > button {
+  color: @text-color;
+}
+
+.widget-mpris > box > button {
+  color: @text-color;
+}
+
+.widget-mpris > box > button:disabled {
+  color: @text-color-disabled;
+}
+
+.widget-mpris > box > button:hover {
+  color: black;
+}
+

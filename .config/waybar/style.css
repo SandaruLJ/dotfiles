@@ -45,6 +45,7 @@ label:focus {
 #submap,
 #idle_inhibitor,
 #privacy-item,
+#custom-notification,
 #power-profiles-daemon {
     padding: 0 12px;
     color: #ffffff;
@@ -311,6 +312,14 @@ window#waybar.empty {
     padding: 0 5px;
     margin: 0 5px;
     min-width: 16px;
+}
+
+
+/* CUSTOM: NOTIFICATION */
+
+#custom-notification {
+    background-color: #ecf0f1;
+    color: #2d3436;
 }
 
 

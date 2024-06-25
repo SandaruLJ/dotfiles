@@ -1,0 +1,22 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionY": "bottom",
+  "control-center-margin-top": 12,
+  "control-center-margin-bottom": 12,
+  "control-center-margin-right": 12,
+  "notification-icon-size": 96,
+  "widgets": [
+    "inhibitors",
+    "title",
+    "dnd",
+    "mpris",
+    "notifications"
+  ],
+  "notification-visibility": {
+    "spotify": {
+      "state": "transient",
+      "urgency": "Low",
+      "app-name": "Spotify"
+    }
+  }
+}
