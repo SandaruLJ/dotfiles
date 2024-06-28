@@ -8,7 +8,7 @@
 
 * {
     font-family: monospace;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 button {
@@ -47,7 +47,7 @@ label:focus {
 #privacy-item,
 #custom-notification,
 #power-profiles-daemon {
-    padding: 0 12px;
+    padding: 0 10px;
     color: #ffffff;
 }
 
@@ -63,14 +63,14 @@ label:focus {
 
 /* If workspaces is the rightmost module on the left side, style its rightmost button */
 .modules-left > widget:last-child > #workspaces button:last-child {
-    padding-right: 16px;
-    border-top-right-radius: 12px;
+    padding-right: 12px;
+    border-top-right-radius: 10px;
 }
 
 /* If idle inhibitor is the leftmost or second leftmost module on the right side, style it */
 .modules-right > widget:first-child > #idle_inhibitor, widget:nth-child(2) > #idle_inhibitor {
-    padding-left: 16px;
-    border-top-left-radius: 12px;
+    padding-left: 12px;
+    border-top-left-radius: 10px;
 }
 
 
@@ -95,7 +95,7 @@ window#waybar.empty {
 /* WORKSPACES */
 
 #workspaces button {
-    padding: 0 8px;
+    padding: 0 6px;
     background-color: @background;
     color: #ffffff;
 }
@@ -125,7 +125,7 @@ window#waybar.empty {
 
 #clock {
     background-color: #9b59b6;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 500;
 }
 
@@ -159,13 +159,13 @@ window#waybar.empty {
 /* NETWORK + BLUETOOTH */
 
 #network {
-    padding-left: 16px;
-    padding-right: 8px;
+    padding-left: 12px;
+    padding-right: 6px;
 }
 
 #bluetooth {
-    padding-left: 8px;
-    padding-right: 16px;
+    padding-left: 6px;
+    padding-right: 12px;
 }
 
 #network, #bluetooth {
@@ -209,7 +209,7 @@ window#waybar.empty {
 }
 
 #backlight {
-    padding-right: 16px;
+    padding-right: 12px;
 }
 
 
@@ -224,14 +224,14 @@ window#waybar.empty {
 
 /* Adjust padding of leftmost privacy item widget, if both are displayed */
 #privacy > :nth-last-child(2) #privacy-item {
-    padding-left: 16px;
-    padding-right: 8px;
+    padding-left: 12px;
+    padding-right: 6px;
 }
 
 /* Adjust padding of rightmost privacy item widget, if both are displayed */
 #privacy > :nth-child(2) #privacy-item {
-    padding-left: 8px;
-    padding-right: 16px;
+    padding-left: 6px;
+    padding-right: 12px;
 }
 
 

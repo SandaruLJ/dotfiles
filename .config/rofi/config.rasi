@@ -4,7 +4,7 @@ configuration {
   display-window: "";
   drun-display-format: "{icon} {name}";
   window-format: "  {w}  {c}\t  {t}";
-  font: "sans 16";
+  font: "sans 12";
   modi: "window,run,drun";
   show-icons: true;
 }
@@ -25,7 +25,7 @@ configuration {
 }
 
 element {
-  padding: 12 18;
+  padding: 10 16;
   orientation: horizontal;
   text-color: @fg-alt;
 }
@@ -35,7 +35,7 @@ element-text {
 }
 
 element-icon {
-  size: 36;
+  size: 32;
 }
 
 element selected {
@@ -61,6 +61,7 @@ listview {
 mainbox {
   background-color: @bg;
   children: [inputbar, listview];
+  border-radius: 16;
 }
 
 prompt {
@@ -72,4 +73,6 @@ prompt {
 
 window {
   transparency: "real";
+  border-radius: 16;
+  width: 35%;
 }

@@ -1,7 +1,7 @@
 // -*- mode: jsonc -*-
 {
     "position": "bottom",
-    "height": 32,
+    "height": 28,
     "spacing": 0,
     "modules-left": [
         "hyprland/workspaces"
@@ -130,7 +130,7 @@
     "upower": {
         "format": "",
         "format-alt": " {percentage} {time}",
-        "icon-size": 20,
+        "icon-size": 15,
         "hide-if-empty": true,
         "tooltip": true
     },
@@ -146,12 +146,12 @@
       }
     },
     "tray": {
-        "icon-size": 22,
-        "spacing": 12
+        "icon-size": 18,
+        "spacing": 10
     },
     "privacy": {
         "icon-spacing": 0,
-        "icon-size": 18,
+        "icon-size": 14,
         "modules": [
             {"type": "screenshare"},
             {"type": "audio-in"}
