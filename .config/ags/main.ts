@@ -12,6 +12,21 @@ const osdVolume = OsdSlider(
   'osdVolume',
   audio.speaker.bind('volume').as(getVolumeIcon),
   audio.speaker.bind('volume'),
+  {
+    gobject: audio,
+    callback: (self) => {
+      self.icon = audio.speaker.is_muted
+        ? getVolumeIcon(0)
+        : getVolumeIcon(audio.speaker.volume);
+    },
+    signal: 'speaker-changed',
+  },
+  {
+    gobject: audio,
+    callback: (self) =>
+      (self.value = audio.speaker.is_muted ? 0 : audio.speaker.volume),
+    signal: 'speaker-changed',
+  },
 );
 
 App.config({

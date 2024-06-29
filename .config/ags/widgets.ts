@@ -1,11 +1,42 @@
-import { Binding } from 'resource:///com/github/Aylur/ags/service.js';
-import { Window } from 'resource:///com/github/Aylur/ags/widgets/window.js';
+import { Binding } from 'types/service';
+import { Connectable } from 'types/service';
+import Icon from 'types/widgets/icon';
+import LevelBar from 'types/widgets/levelbar';
+import { Window } from 'types/widgets/window';
+
+const audio = await Service.import('audio');
 
 export const OsdSlider = (
   name: string,
-  icon: Binding<any, string, string>,
-  value: Binding<any, string, number>,
+  iconBinding: Binding<any, string, string>,
+  valueBinding: Binding<any, string, number>,
+  iconHook?: {
+    gobject: Connectable;
+    callback: (self: Icon<unknown>, ...args: any[]) => void;
+    signal?: string;
+  },
+  valueHook?: {
+    gobject: Connectable;
+    callback: (self: LevelBar<unknown>, ...args: any[]) => void;
+    signal?: string;
+  },
 ): Window<any, unknown> => {
+  const icon = Widget.Icon({
+    icon: iconBinding,
+    className: 'osd-slider-icon',
+    widthRequest: 32,
+  });
+
+  const level = Widget.LevelBar({
+    value: valueBinding,
+    className: 'osd-slider-level',
+    widthRequest: 160,
+  });
+
+  if (iconHook) icon.hook(iconHook.gobject, iconHook.callback, iconHook.signal);
+  if (valueHook)
+    level.hook(valueHook.gobject, valueHook.callback, valueHook.signal);
+
   return Widget.Window({
     name: name,
     className: 'osd-slider-container',
@@ -17,18 +48,7 @@ export const OsdSlider = (
     margins: [24, 0],
     heightRequest: 24,
     child: Widget.Box({
-      children: [
-        Widget.Icon({
-          icon: icon,
-          className: 'osd-slider-icon',
-          widthRequest: 32,
-        }),
-        Widget.LevelBar({
-          value: value,
-          className: 'osd-slider-level',
-          widthRequest: 160,
-        }),
-      ],
+      children: [icon, level],
     }),
   });
 };
