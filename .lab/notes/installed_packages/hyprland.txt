@@ -24,6 +24,8 @@ wpaperd
 brightnessctl
 playerctl
 rofi
+aylurs-gtk-shell
+esbuild
 
 kitty
 thunar
