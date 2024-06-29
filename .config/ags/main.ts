@@ -16,6 +16,7 @@ const osdVolume = OsdSlider(
 
 App.config({
   windows: [osdVolume],
+  style: 'style.css',
 });
 
 /* Behaviour */

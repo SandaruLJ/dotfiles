@@ -8,6 +8,7 @@ export const OsdSlider = (
 ): Window<any, unknown> => {
   return Widget.Window({
     name: name,
+    className: 'osd-slider-container',
     visible: false,
     layer: 'overlay',
     exclusivity: 'ignore',
@@ -18,13 +19,14 @@ export const OsdSlider = (
     child: Widget.Box({
       children: [
         Widget.Icon({
-          className: 'osd-slider-icon',
-          widthRequest: 24,
           icon: icon,
+          className: 'osd-slider-icon',
+          widthRequest: 32,
         }),
         Widget.LevelBar({
-          widthRequest: 160,
           value: value,
+          className: 'osd-slider-level',
+          widthRequest: 160,
         }),
       ],
     }),

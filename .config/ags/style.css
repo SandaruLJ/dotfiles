@@ -1,0 +1,13 @@
+.osd-slider-container {
+    background-color: rgba(20, 20, 20, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+.osd-slider-level block {
+    border-radius: 8px;
+}
+
+.osd-slider-level trough {
+    margin: 8px 8px 8px 0;
+}
