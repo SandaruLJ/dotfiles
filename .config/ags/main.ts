@@ -3,6 +3,7 @@ import { Window } from 'types/widgets/window';
 import { Variable as VariableT } from 'types/variable';
 import { getMicIcon, getVolumeIcon } from 'utils';
 import { OsdSlider } from 'widgets';
+import { brightness } from 'services';
 
 const audio = await Service.import('audio');
 
@@ -39,15 +40,21 @@ const osdMic = OsdSlider(
     .as((mute) => (mute ? 0 : audio.microphone.volume)),
 );
 
+const osdBacklight = OsdSlider(
+  'osdBacklight',
+  'display-brightness-symbolic',
+  brightness.bind('brightness'),
+);
+
 App.config({
-  windows: [osdVolume, osdMic],
+  windows: [osdVolume, osdMic, osdBacklight],
   style: `${App.configDir}/style.css`,
 });
 
 /* Behaviour */
 
 // Enabled OSD widgets
-const osdWidgets = [osdVolume, osdMic];
+const osdWidgets = [osdVolume, osdMic, osdBacklight];
 // Current display status of widgets
 const displayedWidgets: { [key: string]: VariableT<boolean> } = {};
 
@@ -76,8 +83,7 @@ for (const osd of osdWidgets) {
     if (!value) return;
 
     osd.show();
-    if (latestWidget && latestWidget !== osd)
-      latestWidget.hide();
+    if (latestWidget && latestWidget !== osd) latestWidget.hide();
     latestWidget = osd;
 
     // Disable active timeout, if exists

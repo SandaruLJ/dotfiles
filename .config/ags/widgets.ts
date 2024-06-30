@@ -4,11 +4,9 @@ import Icon from 'types/widgets/icon';
 import LevelBar from 'types/widgets/levelbar';
 import { Window } from 'types/widgets/window';
 
-const audio = await Service.import('audio');
-
 export const OsdSlider = (
   name: string,
-  iconBinding: Binding<any, string, string>,
+  iconBinding: Binding<any, string, string> | string,
   valueBinding: Binding<any, string, number>,
   iconHook?: {
     gobject: Connectable;
