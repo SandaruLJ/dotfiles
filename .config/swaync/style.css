@@ -26,7 +26,7 @@
 
 .notification-row .notification-background .notification .notification-default-action .notification-content .image {
   /* Notification primary image */
-  border-radius: 12px;
+  border-radius: 4px;
   margin: 0 12px 0 0;
 }
 
@@ -111,5 +111,9 @@
 
 .widget-mpris > box > button:hover {
   color: black;
+}
+
+.widget-mpris .widget-mpris-player .widget-mpris-album-art {
+  border-radius: 4px;
 }
 
