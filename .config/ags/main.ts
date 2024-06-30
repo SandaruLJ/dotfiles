@@ -1,7 +1,7 @@
 import GLib from 'gi://GLib';
 import { Window } from 'types/widgets/window';
 import { Variable as VariableT } from 'types/variable';
-import { getVolumeIcon } from 'utils';
+import { getMicIcon, getVolumeIcon } from 'utils';
 import { OsdSlider } from 'widgets';
 
 const audio = await Service.import('audio');
@@ -29,15 +29,25 @@ const osdVolume = OsdSlider(
   },
 );
 
+const osdMic = OsdSlider(
+  'osdMic',
+  audio.microphone
+    .bind('is_muted')
+    .as((mute) => getMicIcon(mute, audio.microphone.volume)),
+  audio.microphone
+    .bind('is_muted')
+    .as((mute) => (mute ? 0 : audio.microphone.volume)),
+);
+
 App.config({
-  windows: [osdVolume],
+  windows: [osdVolume, osdMic],
   style: `${App.configDir}/style.css`,
 });
 
 /* Behaviour */
 
 // Enabled OSD widgets
-const osdWidgets = [osdVolume];
+const osdWidgets = [osdVolume, osdMic];
 // Current display status of widgets
 const displayedWidgets: { [key: string]: VariableT<boolean> } = {};
 
@@ -66,6 +76,8 @@ for (const osd of osdWidgets) {
     if (!value) return;
 
     osd.show();
+    if (latestWidget && latestWidget !== osd)
+      latestWidget.hide();
     latestWidget = osd;
 
     // Disable active timeout, if exists
