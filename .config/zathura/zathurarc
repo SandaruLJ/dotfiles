@@ -1,5 +1,4 @@
 set selection-clipboard clipboard
 set continuous-hist-save true
-set font 'monospace normal 14'
 set default-bg rgba(0,0,0,0.7)
 
