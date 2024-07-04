@@ -1,4 +1,5 @@
 [default]
 mode = "center"
 path = "~/Pictures/SHARED/Wallpapers"
+group = 0
 
