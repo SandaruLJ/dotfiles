@@ -20,6 +20,7 @@ gammastep
 udiskie
 gnome-keyring
 wpaperd
+swayidle
 
 brightnessctl
 playerctl
