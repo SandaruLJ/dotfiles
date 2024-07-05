@@ -60,7 +60,6 @@
         "format": "{icon}",
         "tooltip-format": "{ifname} via {gwaddr}",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)",
-        "format-alt": "{icon} {essid}{ifname}",
         "format-icons": {
             "wifi": [
                 "<span size='large'>󰤯</span>",
@@ -86,7 +85,6 @@
     },
     "pulseaudio": {
         "format": "{icon}  {format_source}",
-        "format-alt": "{icon}  {format_source}  {desc} ({volume}%)",
         "format-bluetooth": "{icon} 󰂰  {format_source}",
         "format-bluetooth-muted": "󰝟  {icon} 󰂰  {format_source}",
         "format-muted": "󰝟  {icon}  {format_source}",
@@ -109,8 +107,8 @@
             "default-muted": "󰝟"
         },
         "tooltip-format": "{desc} ({volume}%)",
-        "on-click-right": "pavucontrol",
-        "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
     "battery": {
         "states": {
@@ -118,18 +116,16 @@
             "critical": 20
         },
         "format": "{icon}",
-        "format-alt": "{icon} {capacity}% {timeTo}",
         "format-plugged": "󰚥",
         "format-icons": {
             "discharging": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
             "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
         },
         "tooltip-format": "{capacity}% {timeTo}",
-        "on-click-middle": "~/.config/hypr/scripts/toggle_effects.sh"
+        "on-click": "~/.config/hypr/scripts/toggle_effects.sh"
     },
     "upower": {
         "format": "",
-        "format-alt": " {percentage} {time}",
         "icon-size": 15,
         "hide-if-empty": true,
         "tooltip": true
@@ -159,7 +155,6 @@
     },
     "clock": {
         "format": "{:%a %d %b <span size='large'>󰃭</span> %H:%M}",
-        "format-alt": "{:%H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "timezones": ["Asia/Colombo", "Etc/UTC"],
         "actions": {
