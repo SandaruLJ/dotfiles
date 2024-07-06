@@ -1,6 +1,7 @@
 hyprland
 hypridle
 hyprlock
+hyprpicker
 
 swaync
 pipewire
@@ -27,6 +28,7 @@ playerctl
 rofi
 aylurs-gtk-shell
 esbuild
+grimblast
 
 kitty
 thunar
