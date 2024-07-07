@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LOCKSCR_PATH="/tmp/lockscreen.png"
-LOCKSCR_GEN_DELAY=0.1
+LOCKSCR_GEN_DELAY=0.5
 
 main() {
     if [[ $1 == "init" ]]; then
@@ -27,17 +27,14 @@ generate_lockscreen() {
     current_wallpaper=$(get_current_wallpaper)
     image_extension=$(get_image_extension "$current_wallpaper")
 
-    if [[ -f $LOCKSCR_PATH ]]; then
-        rm $LOCKSCR_PATH
-    fi
+    kill_running_tasks
 
     if [[ "$image_extension" != "PNG" ]]; then
         # Convert non-PNG files since hyprlock currently only supports PNGs
-        kill_running_convertions
         magick "$current_wallpaper" -resize 1920x1080\> $LOCKSCR_PATH
     else
-        # Otherwise, just link the file
-        ln -s "$current_wallpaper" $LOCKSCR_PATH
+        # Otherwise, just copy the file
+        cp "$current_wallpaper" $LOCKSCR_PATH
     fi
 }
 
@@ -56,8 +53,8 @@ get_image_extension() {
     file "$1" | cut -d ':' -f 2 | cut -d ' ' -f 2
 }
 
-kill_running_convertions() {
-    pkill -f "magick.*$LOCKSCR_PATH"
+kill_running_tasks() {
+    pkill -f "(magick|cp).*$LOCKSCR_PATH"
 }
 
 main "$@"
