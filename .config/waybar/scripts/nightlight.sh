@@ -11,7 +11,7 @@ main() {
             toggle
             ;;
         *)
-            echo 'Usage: <program> init|toggle'
+            echo 'Usage: <program> subscribe|toggle'
             ;;
     esac
 }

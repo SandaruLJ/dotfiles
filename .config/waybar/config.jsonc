@@ -225,6 +225,7 @@
         "format-icons": {
             "daytime": "",
             "night": "󱩌",
+            "transition": "󱩌",
             "none": "󱩍"
         },
         "tooltip-format": "<span text_transform='capitalize'>{}</span>",
