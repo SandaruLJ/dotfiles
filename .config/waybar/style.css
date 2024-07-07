@@ -46,6 +46,7 @@ label:focus {
 #idle_inhibitor,
 #privacy-item,
 #custom-notification,
+#custom-nightlight,
 #power-profiles-daemon {
     padding: 0 10px;
     color: #ffffff;
@@ -197,15 +198,20 @@ window#waybar.empty {
 }
 
 
-/* IDLE INHIBITOR + BACKLIGHT */
+/* IDLE INHIBITOR + NIGHTLIGHT + BACKLIGHT */
 
-#idle_inhibitor, #backlight {
+#idle_inhibitor, #custom-nightlight, #backlight {
     background-color: #2d3436;
 }
 
 #idle_inhibitor.activated {
     background-color: #ecf0f1;
     color: #2d3436;
+}
+
+#custom-nightlight {
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
 #backlight {

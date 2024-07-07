@@ -12,6 +12,7 @@
     "modules-right": [
         "tray",
         "idle_inhibitor",
+        "custom/nightlight",
         "backlight",
         "privacy",
         "pulseaudio",
@@ -217,6 +218,20 @@
         "exec": "swaync-client -swb",
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "custom/nightlight": {
+        "format": "{icon}",
+        "format-icons": {
+            "daytime": "",
+            "night": "󱩌",
+            "none": "󱩍"
+        },
+        "tooltip-format": "<span text_transform='capitalize'>{}</span>",
+        "return-type": "json",
+        "exec-if": "which gammastep",
+        "exec": "~/.config/waybar/scripts/nightlight.sh subscribe",
+        "on-click": "~/.config/waybar/scripts/nightlight.sh toggle",
         "escape": true
     }
 }
