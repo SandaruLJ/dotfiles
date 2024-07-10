@@ -61,6 +61,7 @@
         "format": "{icon}",
         "tooltip-format": "{ifname} via {gwaddr}",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-disconnected": "Disconnected",
         "format-icons": {
             "wifi": [
                 "<span size='large'>󰤯</span>",
@@ -159,7 +160,7 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "timezones": ["Asia/Colombo", "Etc/UTC"],
         "actions": {
-            "on-click-right": "tz_up"
+            "on-click": "tz_up"
         }
     },
     "idle_inhibitor": {
@@ -167,7 +168,9 @@
         "format-icons": {
             "activated": "",
             "deactivated": ""
-        }
+        },
+        "tooltip-format-activated": "<span text_transform='capitalize'>{}</span>",
+        "tooltip-format-deactivated": "<span text_transform='capitalize'>{}</span>"
     },
     "backlight": {
         "format": "{icon}",
@@ -212,7 +215,7 @@
             "dnd-inhibited-notification": "󰂛",
             "dnd-inhibited-none": "󰂛"
         },
-        "tooltip-format": "{}",
+        "tooltip-format": "Total: {}",
         "return-type": "json",
         "exec-if": "which swaync-client",
         "exec": "swaync-client -swb",
