@@ -1,0 +1,6 @@
+Music sync command:
+    rclone copy {src_path} {remote}:{dest_path} --no-update-modtime --update -v
+    e.g. rclone copy ~/Music/NERGAL/ storj-music:vienna/Music/ --no-update-modtime --update -v
+
+Always do a dry run before doing the actual upload using the --dry-run option
+
