@@ -28,7 +28,7 @@ playerctl
 rofi
 aylurs-gtk-shell
 esbuild
-grimblast
+hyprshot
 
 kitty
 thunar
