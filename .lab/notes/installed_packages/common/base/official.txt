@@ -15,6 +15,7 @@ man-pages
 
 btrfs-progs
 ntfs-3g
+exfat-progs
 
 base-devel
 git
