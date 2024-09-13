@@ -7,9 +7,7 @@
     "modules-left": [
         "hyprland/workspaces"
     ],
-    "modules-center": [
-        "hyprland/window"
-    ],
+    "modules-center": [],
     "modules-right": [
         "tray",
         "idle_inhibitor",
@@ -87,10 +85,10 @@
         "tooltip-format-connected-battery": "{device_alias} ({device_battery_percentage}%)"
     },
     "pulseaudio": {
-        "format": "{icon}  {format_source}",
-        "format-bluetooth": "{icon} 󰂰  {format_source}",
-        "format-bluetooth-muted": "󰝟  {icon} 󰂰  {format_source}",
-        "format-muted": "󰝟  {icon}  {format_source}",
+        "format": "{icon} 󰇝 {format_source}",
+        "format-bluetooth": "{icon} 󰂰 󰇝 {format_source}",
+        "format-bluetooth-muted": "󰝟  {icon} 󰂰 󰇝 {format_source}",
+        "format-muted": "󰝟  {icon} 󰇝 {format_source}",
         "format-source": "󰍬",
         "format-source-muted": "󰍭",
         "format-icons": {
@@ -157,7 +155,7 @@
         ]
     },
     "clock": {
-        "format": "{:%a %d %b <span size='large'>󰃭</span> %H:%M}",
+        "format": "{:%a %d %b %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "timezones": ["Asia/Colombo", "Etc/UTC"],
         "actions": {

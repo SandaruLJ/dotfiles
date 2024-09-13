@@ -50,6 +50,7 @@ label:focus {
 #power-profiles-daemon {
     padding: 0 10px;
     color: #ffffff;
+    background-color: @background
 }
 
 #window,
@@ -78,17 +79,6 @@ label:focus {
 /* BAR */
 
 window#waybar {
-    background-color: @background-transparent;
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
-}
-
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-window#waybar.empty {
     background-color: transparent;
 }
 
@@ -125,60 +115,8 @@ window#waybar.empty {
 /* CLOCK */
 
 #clock {
-    background-color: #9b59b6;
     font-size: 13px;
     font-weight: 500;
-}
-
-
-/* BATTERY */
-
-#battery {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-#battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
-}
-
-
-/* UPOWER */
-
-#upower.discharging {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-#upower.charging {
-    color: #ffffff;
-    background-color: #26A65B;
-}
-
-
-/* NETWORK + BLUETOOTH */
-
-#network {
-    padding-left: 12px;
-    padding-right: 6px;
-}
-
-#bluetooth {
-    padding-left: 6px;
-    padding-right: 12px;
-}
-
-#network, #bluetooth {
-    background-color: #2980b9;
-}
-
-
-/* PULSE AUDIO */
-
-#pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
 }
 
 
@@ -200,28 +138,15 @@ window#waybar.empty {
 
 /* IDLE INHIBITOR + NIGHTLIGHT + BACKLIGHT */
 
-#idle_inhibitor, #custom-nightlight, #backlight {
-    background-color: #2d3436;
-}
-
 #idle_inhibitor.activated {
     background-color: #ecf0f1;
     color: #2d3436;
-}
-
-#custom-nightlight {
-    padding-right: 8px;
-}
-
-#backlight {
-    padding-right: 12px;
 }
 
 
 /* PRIVACY INDICATORS */
 
 #privacy-item {
-    color: white;
     background-color: #e04c16;
     transition-property: padding;
     transition-duration: .25s;
@@ -244,11 +169,6 @@ window#waybar.empty {
 
 #power-profiles-daemon.performance {
     background-color: #f53c3c;
-    color: #ffffff;
-}
-
-#power-profiles-daemon.balanced {
-    background-color: #2980b9;
     color: #ffffff;
 }
 
@@ -317,14 +237,6 @@ window#waybar.empty {
     padding: 0 5px;
     margin: 0 5px;
     min-width: 16px;
-}
-
-
-/* CUSTOM: NOTIFICATION */
-
-#custom-notification {
-    background-color: #ecf0f1;
-    color: #2d3436;
 }
 
 
