@@ -8,10 +8,11 @@ set nocompatible
 set nowrap
 set encoding=utf8
 
-" Use 4 spaces instead of tab
+" Use 4 spaces instead of tab etc.
 set expandtab
 set shiftwidth=4
 set softtabstop=4
+set shiftround
 
 " Set backup and swap directories
 set backupdir=~/.vim/backup/,/tmp//,.
