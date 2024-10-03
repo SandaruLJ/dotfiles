@@ -80,6 +80,12 @@ label:focus {
 
 window#waybar {
     background-color: transparent;
+    transition-property: background-color;
+    transition-duration: .2s;
+}
+
+window#waybar.fullscreen {
+    background-color: @background;
 }
 
 

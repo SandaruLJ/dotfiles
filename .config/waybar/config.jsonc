@@ -7,7 +7,9 @@
     "modules-left": [
         "hyprland/workspaces"
     ],
-    "modules-center": [],
+    "modules-center": [
+        "hyprland/window"
+    ],
     "modules-right": [
         "tray",
         "idle_inhibitor",
@@ -53,8 +55,7 @@
         "on-scroll-down": "hyprctl dispatch workspace e+1"
     },
     "hyprland/window": {
-        "format": " {title}",
-        "icon": true
+        "format": "",
     },
     "network": {
         "format": "{icon}",
@@ -88,7 +89,6 @@
         "format": "{icon} 󰇝 {format_source}",
         "format-bluetooth": "{icon} 󰂰 󰇝 {format_source}",
         "format-bluetooth-muted": "󰝟  {icon} 󰂰 󰇝 {format_source}",
-        "format-muted": "󰝟  {icon} 󰇝 {format_source}",
         "format-source": "󰍬",
         "format-source-muted": "󰍭",
         "format-icons": {
