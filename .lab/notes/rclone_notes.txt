@@ -4,3 +4,18 @@ Music sync command:
 
 Always do a dry run before doing the actual upload using the --dry-run option
 
+
+KOReader backup command:
+    rclone copy --include-from {file-list-to-backup} . {remote}:{dest_path} --update -v
+    e.g. rclone copy --include-from settings_backup.txt . google-drive:koreader/ -v
+
+{file-list-to-backup} should be a text file with the filenames of the files to be backed up, each on a separate line
+
+e.g.
+    settings/*
+    styletweaks/*
+    data/cr3.ini
+    defaults.persistent.lua
+    history.lua
+    settings.reader.lua
+
