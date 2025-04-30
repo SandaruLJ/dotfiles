@@ -1,13 +1,13 @@
 Music sync command:
-    rclone copy {src_path} {remote}:{dest_path} --no-update-modtime --update -v
-    e.g. rclone copy ~/Music/NERGAL/ storj-music:vienna/Music/ --no-update-modtime --update -v
+    rclone copy {src_path} {remote}:{dest_path} --update --no-update-modtime -v
+    e.g. rclone copy ~/Music/NERGAL/ storj-music:vienna/Music/ --update --no-update-modtime -v
 
 Always do a dry run before doing the actual upload using the --dry-run option
 
 
 KOReader backup command:
-    rclone copy --include-from {file-list-to-backup} . {remote}:{dest_path} --update -v
-    e.g. rclone copy --include-from settings_backup.txt . google-drive:koreader/ -v
+    rclone copy --include-from {file-list-to-backup} . {remote}:{dest_path} --update --no-update-modtime -v
+    e.g. rclone copy --include-from settings_backup.txt . google-drive:koreader/ --update --no-update-modtime -v
 
 {file-list-to-backup} should be a text file with the filenames of the files to be backed up, each on a separate line
 
