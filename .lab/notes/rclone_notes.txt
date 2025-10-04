@@ -5,9 +5,38 @@ Music sync command:
 Always do a dry run before doing the actual upload using the --dry-run option
 
 
-KOReader backup command:
+KOReader backup command (--filter-from):
+    rclone copy --filter-from {file-list-to-backup} . {remote}:{dest_path} --update --no-update-modtime -v
+    e.g. rclone copy --filter-from backup_filter.txt . google-drive:koreader/ --update --no-update-modtime -v
+
+{file-list-to-backup} should be a text file with the filenames of the files to be backed up, each on a separate line
+
+e.g.
+    # exclude book cache and dictionary archives
+    - settings/bookinfo_cache.sqlite3
+    - data/dict/*.gz
+
+    # include settings, fonts, dictionaries, etc.
+    + settings/*
+    + styletweaks/*
+    + patches/*
+    + fonts/custom/*/*
+    + data/dict/*/*
+    + data/cr3.ini
+    + defaults.persistent.lua
+    + history.lua
+    + settings.reader.lua
+
+    # include this filter file
+    + settings_backup_filter.txt
+
+    # exclude everything else
+    - *
+
+
+KOReader backup command (--include-from):
     rclone copy --include-from {file-list-to-backup} . {remote}:{dest_path} --update --no-update-modtime -v
-    e.g. rclone copy --include-from settings_backup.txt . google-drive:koreader/ --update --no-update-modtime -v
+    e.g. rclone copy --include-from backup.txt . google-drive:koreader/ --update --no-update-modtime -v
 
 {file-list-to-backup} should be a text file with the filenames of the files to be backed up, each on a separate line
 
