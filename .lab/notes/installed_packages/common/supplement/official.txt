@@ -6,10 +6,14 @@ libappindicator-gtk3
 
 firefox
 lollypop
-mpv
-kodi
 foliate
 gimp
+
+mpv
+mpv-mpris
+jellyfin-mpv-shim
+python-pystray
+python-pywebview
 
 pipewire-pulse
 pipewire-jack
